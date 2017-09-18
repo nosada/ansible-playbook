@@ -6,23 +6,34 @@
           state: latest
           name:
                   - fish
+                  - fzf
                   - neovim
                   - tmux
 
+- name: create pacaur/ to ${HOME}/.cache/
+  file:
+          name: "/home/{{ ansible_user }}/.cache/pacaur/"
+          state: directory
+          mode: 0755
+          owner: "{{ ansible_user }}"
+          group: "{{ ansible_user }}"
+
 - name: install neovim-symlinks
+  become: yes
   aur:
           skip_pgp: yes
           user: "{{ ansible_user }}"
           name: neovim-symlinks
 
 - name: install daily-used AUR packages
+  become: yes
   aur:
           skip_pgp: yes
           user: "{{ ansible_user }}"
+          dir: "/home/{{ ansible_user }}/.cache/pacaur/"
           name: "{{ item }}"
   with_items:
           - cower
-          - fzf
           - pacaur
           - alsi
 
