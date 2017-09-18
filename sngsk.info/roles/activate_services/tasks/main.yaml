@@ -1,4 +1,4 @@
-- name: install update_git_managed_packages to /usr/local/bin/
+- name: install update_arch_nspawn_container to /usr/local/bin/
   copy:
           src: update_arch_nspawn_container
           dest: /usr/local/bin

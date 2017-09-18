@@ -4,8 +4,17 @@
           name: machines.target
           state: restarted
 
-- name: restart systemd-nspawn@sngskspawn.service
-  systemd:
-          enabled: yes
-          name: systemd-nspawn@sngskspawn.service
-          state: restarted
+- name: enable nspawn container
+  shell: "machinectl enable {{ item }}"
+  with_items:
+          - sngskspawn
+
+- name: poweroff nspawn container
+  shell: "machinectl poweroff {{ item }}"
+  with_items:
+          - sngskspawn
+
+- name: start nspawn container
+  shell: "machinectl start {{ item }}"
+  with_items:
+          - sngskspawn

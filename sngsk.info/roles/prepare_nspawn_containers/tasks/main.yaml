@@ -7,20 +7,22 @@
 - name: check existence of sngskspawn
   shell: "machinectl list-images | grep sngskspawn"
   register: existence_of_sngskspawn
+  failed_when: false
 
 - name: check running of sngskspawn
   shell: "machinectl list | grep sngskspawn"
   register: running_sngskspawn
+  failed_when: false
 
 - name: stop old sngskspawn
   shell: "machinectl stop sngskspawn"
   when:
-          running_sngskspawn is defined
+          running_sngskspawn.rc == 0
 
 - name: remove old sngskspawn
   shell: "machinectl remove sngskspawn"
   when:
-          existence_of_sngskspawn is defined
+          existence_of_sngskspawn.rc == 0
 
 - name: build sngskspawn
   make:
@@ -33,7 +35,9 @@
           target: install
   notify:
           - restart machines.target for starting systemd-nspawn at booting up
-          - restart systemd-nspawn@sngskspawn.service
+          - enable nspawn container
+          - poweroff nspawn container
+          - start nspawn container
 
 - name: clean sngskspawn
   make:
