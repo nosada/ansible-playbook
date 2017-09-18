@@ -1,0 +1,18 @@
+#!/bin/bash
+
+nspawn-execute() {
+	pid=$(machinectl -a -l status $1 | grep Leader | awk '{print $2}');
+	echo "Execute on $1: nsenter -t $pid -m -i -n -p ${@:2}";
+	nsenter -t $pid -m -i -n -p "${@:2}";
+}
+
+nspawn-execute-all() {
+	for i in $(machinectl list | grep nspawn | awk '{print $1}');
+	do
+		nspawn-execute $i "${@:1}";
+	done
+}
+
+yes | nspawn-execute-all pacman -Syu
+yes | nspawn-execute-all pacman -Scc
+nspawn-execute-all pacman-optimize

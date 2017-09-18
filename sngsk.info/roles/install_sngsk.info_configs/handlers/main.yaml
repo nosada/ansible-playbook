@@ -1,0 +1,19 @@
+- name: activate nginx.service
+  systemd:
+          enabled: yes
+          name: nginx.service
+          state: restarted
+
+- name: activate certbot.service
+  systemd:
+          daemon_reload: yes
+          enabled: yes
+          name: certbot.service
+          state: restarted
+
+- name: activate certbot.timer
+  systemd:
+          daemon_reload: yes
+          enabled: yes
+          name: certbot.timer
+          state: restarted

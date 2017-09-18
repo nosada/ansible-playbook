@@ -1,0 +1,10 @@
+[Unit]
+Description=update arch linux nspawn container (daily)
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=1day
+Persistent=true
+
+[Install]
+WantedBy=timers.target

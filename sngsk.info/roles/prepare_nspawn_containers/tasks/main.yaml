@@ -1,0 +1,41 @@
+- name: clone mkosi-files repository
+  git:
+          repo: https://github.com/nosada/mkosi-files.git
+          dest: /opt/mkosi-files
+          track_submodules: yes
+
+- name: check existence of sngskspawn
+  shell: "machinectl list-images | grep sngskspawn"
+  register: existence_of_sngskspawn
+
+- name: check running of sngskspawn
+  shell: "machinectl list | grep sngskspawn"
+  register: running_sngskspawn
+
+- name: stop old sngskspawn
+  shell: "machinectl stop sngskspawn"
+  when:
+          running_sngskspawn is defined
+
+- name: remove old sngskspawn
+  shell: "machinectl remove sngskspawn"
+  when:
+          existence_of_sngskspawn is defined
+
+- name: build sngskspawn
+  make:
+          chdir: /opt/mkosi-files/sngskspawn
+          target: image
+
+- name: install sngskspawn
+  make:
+          chdir: /opt/mkosi-files/sngskspawn
+          target: install
+  notify:
+          - restart machines.target for starting systemd-nspawn at booting up
+          - restart systemd-nspawn@sngskspawn.service
+
+- name: clean sngskspawn
+  make:
+          chdir: /opt/mkosi-files/sngskspawn
+          target: clean

@@ -1,0 +1,9 @@
+[Unit]
+Description=wake up nginx (per 2min)
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=5min
+
+[Install]
+WantedBy=timers.target

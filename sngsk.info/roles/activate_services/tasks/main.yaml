@@ -1,0 +1,51 @@
+- name: install update_git_managed_packages to /usr/local/bin/
+  copy:
+          src: update_arch_nspawn_container
+          dest: /usr/local/bin
+          mode: 0755
+          owner: root
+          group: root
+
+- name: install wake_up_nginx to /usr/local/bin/
+  copy:
+          src: wake_up_nginx
+          dest: /usr/local/bin
+          mode: 0755
+          owner: root
+          group: root
+
+- name: install update_container.service
+  copy:
+          src: update_container.service
+          dest: /etc/systemd/system/update_container.service
+          mode: 0644
+          owner: root
+          group: root
+  notify: activate update_container.service
+
+- name: install update_container.timer
+  copy:
+          src: update_container.service
+          dest: /etc/systemd/system/update_container.service
+          mode: 0644
+          owner: root
+          group: root
+  notify: activate update_container.timer
+
+- name: install wake_up_nginx.service
+  copy:
+          src: wake_up_nginx.service
+          dest: /etc/systemd/system/wake_up_nginx.service
+          mode: 0644
+          owner: root
+          group: root
+  notify: activate wake_up_nginx.service
+
+- name: install wake_up_nginx.timer
+  copy:
+          src: wake_up_nginx.timer
+          dest: /etc/systemd/system/wake_up_nginx.timer
+          mode: 0644
+          owner: root
+          group: root
+  notify: activate wake_up_nginx.timer

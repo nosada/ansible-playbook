@@ -1,0 +1,8 @@
+# ansible-related files
+*.retry
+
+# contentes deployed by ansible
+hosts
+iptables.rules
+ip6tables.rules
+sshd_config

@@ -1,0 +1,11 @@
+- name: restart machines.target for starting systemd-nspawn at booting up
+  systemd:
+          enabled: yes
+          name: machines.target
+          state: restarted
+
+- name: restart systemd-nspawn@sngskspawn.service
+  systemd:
+          enabled: yes
+          name: systemd-nspawn@sngskspawn.service
+          state: restarted

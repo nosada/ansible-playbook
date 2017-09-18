@@ -1,0 +1,20 @@
+- name: restart iptables.service
+  systemd:
+          daemon_reload: yes
+          enabled: yes
+          name: iptables.service
+          state: restarted
+
+- name: restart ip6tables.service
+  systemd:
+          daemon_reload: yes
+          enabled: yes
+          name: ip6tables.service
+          state: restarted
+
+- name: restart sshd.service
+  systemd:
+          daemon_reload: yes
+          enabled: yes
+          name: sshd.service
+          state: restarted
