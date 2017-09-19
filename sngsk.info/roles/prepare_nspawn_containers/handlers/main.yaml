@@ -1,8 +1,8 @@
-- name: restart machines.target for starting systemd-nspawn at booting up
+- name: enable machines.target for starting systemd-nspawn at booting up
   systemd:
           enabled: yes
           name: machines.target
-          state: restarted
+          state: started
 
 - name: enable nspawn container
   shell: "machinectl enable {{ item }}"

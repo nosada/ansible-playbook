@@ -1,0 +1,20 @@
+- name: activate nginx.service
+  systemd:
+          enabled: yes
+          name: nginx.service
+          state: restarted
+
+- name: enable container for mastodon
+  shell: "machinectl enable {{ item }}"
+  with_items:
+          - donspawn
+
+- name: poweroff container for mastodon
+  shell: "machinectl poweroff {{ item }}"
+  with_items:
+          - donspawn
+
+- name: start container for mastodon
+  shell: "machinectl start {{ item }}"
+  with_items:
+          - donspawn

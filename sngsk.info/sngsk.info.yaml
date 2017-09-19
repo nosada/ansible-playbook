@@ -18,6 +18,12 @@
           - install_sngsk.info_configs
           - activate_services
 
+- name: set up mastodon on sngsk.info
+  hosts: sngsk.info
+  become: yes
+  roles:
+          - set_up_mastodon_on_sngsk.info
+
 - name: make life easier
   hosts: sngsk.info
   roles:

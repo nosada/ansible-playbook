@@ -34,9 +34,8 @@
           chdir: /opt/mkosi-files/sngskspawn
           target: install
   notify:
-          - restart machines.target for starting systemd-nspawn at booting up
+          - enable machines.target for starting systemd-nspawn at booting up
           - enable nspawn container
-          - poweroff nspawn container
           - start nspawn container
 
 - name: clean sngskspawn
