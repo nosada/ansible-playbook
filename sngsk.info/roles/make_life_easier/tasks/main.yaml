@@ -9,6 +9,7 @@
                   - fzf
                   - neovim
                   - tmux
+                  - colordiff
 
 - name: create pacaur/ to ${HOME}/.cache/
   file:
@@ -36,6 +37,11 @@
           - cower
           - pacaur
           - alsi
+
+- name: remove aur/ on ${HOME}/
+  file:
+          name: "/home/{{ ansible_user }}/aur"
+          state: absent
 
 - name: download dotfile repository to homedir
   git:
