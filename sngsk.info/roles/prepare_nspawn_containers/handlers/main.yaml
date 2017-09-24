@@ -7,14 +7,18 @@
 - name: enable nspawn container
   shell: "machinectl enable {{ item }}"
   with_items:
-          - sngskspawn
+          "{{ containers }}"
 
 - name: poweroff nspawn container
   shell: "machinectl poweroff {{ item }}"
   with_items:
-          - sngskspawn
+          "{{ containers }}"
 
 - name: start nspawn container
   shell: "machinectl start {{ item }}"
   with_items:
-          - sngskspawn
+          "{{ containers }}"
+
+- name: wait until nspawn container ready
+  pause:
+        seconds: 30

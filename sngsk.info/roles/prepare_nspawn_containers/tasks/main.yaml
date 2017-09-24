@@ -4,41 +4,56 @@
           dest: /opt/mkosi-files
           track_submodules: yes
 
-- name: check existence of sngskspawn
-  shell: "machinectl list-images | grep sngskspawn"
-  register: existence_of_sngskspawn
+- name: check existence of containers
+  shell: "machinectl list-images | grep {{ item }}"
+  register: existence_of_containers
+  with_items:
+          - "{{ containers }}"
   failed_when: false
 
-- name: check running of sngskspawn
-  shell: "machinectl list | grep sngskspawn"
-  register: running_sngskspawn
+- name: check running of containers
+  shell: "machinectl list | grep {{ item }}"
+  register: running_containers
+  with_items:
+          - "{{ containers }}"
   failed_when: false
 
-- name: stop old sngskspawn
-  shell: "machinectl stop sngskspawn"
+- name: stop old containers
+  shell: "machinectl stop {{ item.item }}"
   when:
-          running_sngskspawn.rc == 0
+          item.rc == 0
+  with_items:
+          "{{ running_containers.results }}"
 
-- name: remove old sngskspawn
-  shell: "machinectl remove sngskspawn"
+- name: remove old containers
+  shell: "machinectl remove {{ item.item }}"
   when:
-          existence_of_sngskspawn.rc == 0
+          item.rc == 0
+  with_items:
+          "{{ existence_of_containers.results }}"
 
-- name: build sngskspawn
+- name: build container
   make:
-          chdir: /opt/mkosi-files/sngskspawn
+          chdir: "/opt/mkosi-files/{{ item }}"
           target: image
+  with_items:
+          - "{{ containers }}"
 
-- name: install sngskspawn
+- name: install container
   make:
-          chdir: /opt/mkosi-files/sngskspawn
+          chdir: "/opt/mkosi-files/{{ item }}"
           target: install
+  with_items:
+          - "{{ containers }}"
   notify:
           - enable machines.target for starting systemd-nspawn at booting up
           - enable nspawn container
           - start nspawn container
+          - wait until nspawn container ready
 
-- name: clean sngskspawn
+- name: clean container
   make:
-          chdir: /opt/mkosi-files/sngskspawn
           target: clean
+          chdir: "/opt/mkosi-files/{{ item }}"
+  with_items:
+          - "{{ containers }}"
