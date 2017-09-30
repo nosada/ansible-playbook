@@ -20,8 +20,3 @@
   roles:
           - install_sngsk.info_configs
           - activate_services
-
-- name: make life easier
-  hosts: sngsk.info
-  roles:
-          - make_life_easier

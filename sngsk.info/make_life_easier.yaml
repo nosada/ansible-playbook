@@ -1,0 +1,4 @@
+- name: make life easier
+  hosts: sngsk.info
+  roles:
+          - make_life_easier
