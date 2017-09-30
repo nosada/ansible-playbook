@@ -19,6 +19,7 @@
   with_items:
           "{{ containers }}"
 
-- name: wait until nspawn container ready
-  pause:
-        seconds: 30
+- name: restart nginx
+  systemd:
+          name: nginx.service
+          state: restarted

@@ -37,6 +37,7 @@
           - cower
           - pacaur
           - alsi
+          - python-lolcat
 
 - name: remove aur/ on ${HOME}/
   file:
@@ -48,5 +49,8 @@
           repo: https://github.com/nosada/dotfiles.git
           dest: "/home/{{ ansible_user }}/.dotfiles"
 
-- name: set up dotfiles
+- name: clean dotfiles
+  shell: "/home/{{ ansible_user }}/.dotfiles/clean.sh"
+
+- name: deploy dotfiles
   shell: "/home/{{ ansible_user }}/.dotfiles/deploy.sh"

@@ -49,7 +49,7 @@
           - enable machines.target for starting systemd-nspawn at booting up
           - enable nspawn container
           - start nspawn container
-          - wait until nspawn container ready
+          - restart nginx
 
 - name: clean container
   make:
