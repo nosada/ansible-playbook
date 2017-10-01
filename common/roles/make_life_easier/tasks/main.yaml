@@ -52,6 +52,7 @@
 
 - name: download dotfile repository to homedir
   git:
+          force: yes
           repo: https://github.com/nosada/dotfiles.git
           dest: "/home/{{ ansible_user }}/.dotfiles"
 
@@ -60,3 +61,14 @@
 
 - name: deploy dotfiles
   shell: "/home/{{ ansible_user }}/.dotfiles/deploy.sh"
+
+- name: install .gitconfig to ${HOME}
+  copy:
+          src: .gitconfig
+          dest: "/home/{{ ansible_user }}/.gitconfig"
+          mode: 0644
+          owner: "{{ ansible_user }}"
+          group: "{{ ansible_user }}"
+
+- name: install fish theme
+  shell: "fisher install {{ fish_theme }}"
