@@ -1,15 +1,26 @@
 - name: install daily-used packages
   become: yes
   pacman:
+          state: latest
           upgrade: yes
           update_cache: yes
-          state: latest
           name:
-                  - fish
-                  - fzf
-                  - neovim
-                  - tmux
-                  - colordiff
+                - cowsay
+                - colordiff
+                - fortune-mod
+                - fish
+                - fzf
+                - neovim
+                - tmux
+
+- name: uninstall vi & vim for preparation of installing neovim-symlinks
+  become: yes
+  pacman:
+          state: absent
+          name:
+                - vi
+                - vim
+                - vim-runtime
 
 - name: create pacaur/ to ${HOME}/.cache/
   file:
@@ -19,12 +30,6 @@
           owner: "{{ ansible_user }}"
           group: "{{ ansible_user }}"
 
-- name: install neovim-symlinks
-  become: yes
-  aur:
-          skip_pgp: yes
-          user: "{{ ansible_user }}"
-          name: neovim-symlinks
 
 - name: install daily-used AUR packages
   become: yes
@@ -34,9 +39,10 @@
           dir: "/home/{{ ansible_user }}/.cache/pacaur/"
           name: "{{ item }}"
   with_items:
-          - cower
-          - pacaur
           - alsi
+          - cower
+          - neovim-symlinks
+          - pacaur
           - python-lolcat
 
 - name: remove aur/ on ${HOME}/

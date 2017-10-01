@@ -1,4 +1,4 @@
 - name: make life easier
-  hosts: sngsk.info
+  hosts: common
   roles:
           - make_life_easier

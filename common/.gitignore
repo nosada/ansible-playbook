@@ -1,0 +1,5 @@
+# ansible-related files
+*.retry
+
+# contentes deployed by ansible
+hosts
