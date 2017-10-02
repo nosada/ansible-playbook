@@ -1,0 +1,14 @@
+- name: install daily-used packages
+  become: yes
+  pacman:
+          state: latest
+          upgrade: yes
+          update_cache: yes
+          name:
+                - cowsay
+                - colordiff
+                - fortune-mod
+                - fish
+                - fzf
+                - neovim
+                - tmux

@@ -1,0 +1,2 @@
+- name: install fish theme
+  shell: "fisher install {{ fish_theme }}"

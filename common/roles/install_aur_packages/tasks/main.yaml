@@ -1,0 +1,36 @@
+- name: uninstall vi & vim for preparation of installing neovim-symlinks
+  become: yes
+  pacman:
+          state: absent
+          name:
+                - vi
+                - vim
+                - vim-runtime
+
+- name: create pacaur/ to ${HOME}/.cache/
+  file:
+          name: "/home/{{ ansible_user }}/.cache/pacaur/"
+          state: directory
+          mode: 0755
+          owner: "{{ ansible_user }}"
+          group: "{{ ansible_user }}"
+
+
+- name: install daily-used AUR packages
+  become: yes
+  aur:
+          skip_pgp: yes
+          user: "{{ ansible_user }}"
+          dir: "/home/{{ ansible_user }}/.cache/pacaur/"
+          name: "{{ item }}"
+  with_items:
+          - alsi
+          - cower
+          - neovim-symlinks
+          - pacaur
+          - python-lolcat
+
+- name: remove aur/ on ${HOME}/
+  file:
+          name: "/home/{{ ansible_user }}/aur"
+          state: absent
