@@ -56,3 +56,15 @@
           mode: 0644
           owner: root
           group: root
+
+- name: install resolved.conf to /etc/systemd/
+  copy:
+          src: resolved.conf
+          dest: /etc/systemd/resolved.conf
+          mode: 0644
+          owner: root
+          group: root
+  notify:
+          - restart unbound.service
+          - restart systemd-networkd.service
+          - restart systemd-resolved.service
