@@ -1,9 +1,14 @@
-- name: install daily-used packages
+- name: upgrade packages and package databases
   become: yes
   pacman:
           state: latest
           upgrade: yes
           update_cache: yes
+
+- name: install daily-used packages
+  become: yes
+  pacman:
+          state: latest
           name:
                 - cowsay
                 - colordiff
@@ -12,3 +17,10 @@
                 - fzf
                 - neovim
                 - tmux
+
+- name: install base-devel package group
+  become: yes
+  pacman:
+          state: latest
+          name:
+                  - base-devel

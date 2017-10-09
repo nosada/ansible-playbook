@@ -68,3 +68,8 @@
           - restart unbound.service
           - restart systemd-networkd.service
           - restart systemd-resolved.service
+
+- name: set locale as en_US.UTF-8
+  locale_gen:
+          name: en_US.UTF-8
+          state: present

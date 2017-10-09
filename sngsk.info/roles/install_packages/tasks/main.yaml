@@ -1,11 +1,10 @@
 - name: install required packages for sngsk.info
   pacman:
-          upgrade: yes
-          update_cache: yes
           state: latest
           name:
                   - certbot
                   - certbot-nginx
+                  - git
                   - nginx
                   - reflector
                   - unbound
