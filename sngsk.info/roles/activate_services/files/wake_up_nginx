@@ -1,13 +1,10 @@
 #!/bin/bash
 
-while true
-do
-	NGINX_STATUS=`systemctl status nginx | grep Active | grep running`
-	if [ "${NGINX_STATUS}" != "" ]; then
-		echo "Nginx wakes up."
-		break
-	else
-		echo "Nginx isn't running. Start Nginx."
-		systemctl start nginx
-	fi
-done
+NGINX_STATUS=`systemctl status nginx | grep Active | grep running`
+if [ "${NGINX_STATUS}" != "" ]; then
+	echo "Nginx wakes up."
+	break
+else
+	echo "Nginx isn't running. Start Nginx."
+	systemctl start nginx
+fi

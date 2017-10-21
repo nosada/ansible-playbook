@@ -23,10 +23,3 @@
   user:
           name: "{{ ansible_user }}"
           shell: /usr/bin/fish
-
-- name: add 'Scripts/' to ${HOME}
-  file:
-          path: "/home/{{ ansible_user }}/Scripts"
-          state: directory
-          owner: "{{ ansible_user }}"
-          group: "{{ ansible_user }}"

@@ -1,9 +1,15 @@
+- name: set up home directory
+  hosts: common
+  roles:
+          -  symlink_cache_to_shm
+
 - name: set up packages and configs
   hosts: common
   roles:
           - install_arch_packages
           - install_aur_packages
           - install_configs_and_set_up_user
+
 - name: set up fish shell
   hosts: common
   roles:

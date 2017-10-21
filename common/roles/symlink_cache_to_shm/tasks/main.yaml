@@ -1,0 +1,10 @@
+- name: delete current ${HOME}/.cache
+  file:
+          path: "/home/{{ ansible_user }}/.cache"
+          state: absent
+
+- name: create symlink ${HOME}/.cache to /dev/shm/cache
+  file:
+          src: "/dev/shm/cache/"
+          dest: "/home/{{ ansible_user }}/.cache"
+          state: link

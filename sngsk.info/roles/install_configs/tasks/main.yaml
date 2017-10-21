@@ -73,3 +73,11 @@
   locale_gen:
           name: en_US.UTF-8
           state: present
+
+- name: install shm.conf to /etc/tmpfiles.d/
+  copy:
+          src: shm.conf
+          dest: /etc/tmpfiles.d/shm.conf
+          mode: 0644
+          owner: root
+          group: root
