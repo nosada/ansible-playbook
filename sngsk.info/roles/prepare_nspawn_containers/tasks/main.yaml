@@ -30,6 +30,13 @@
   with_items:
           "{{ running_containers.results }}"
 
+- name: disable old containers
+  shell: "machinectl disable {{ item.item }}"
+  when:
+          item.rc == 0
+  with_items:
+          "{{ existence_of_containers.results }}"
+
 - name: remove old containers
   shell: "machinectl remove {{ item.item }}"
   when:
