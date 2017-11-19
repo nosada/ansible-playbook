@@ -3,6 +3,11 @@
           path: "/home/{{ ansible_user }}/.cache"
           state: absent
 
+- name: create /dev/shm/cache
+  file:
+          path: "/dev/shm/cache/"
+          state: directory
+
 - name: create symlink ${HOME}/.cache to /dev/shm/cache
   file:
           src: "/dev/shm/cache/"

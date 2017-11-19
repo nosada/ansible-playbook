@@ -9,9 +9,12 @@
   pacman:
           state: latest
           name:
+                  - arch-install-scripts
+                  - btrfs-progs
                   - certbot
                   - certbot-nginx
                   - git
                   - nginx
+                  - polkit
                   - reflector
                   - unbound
