@@ -1,2 +1,15 @@
+- name: find where fish shell installed
+  command: "which fish"
+  register: which_fish
+  failed_when: which_fish.rc != 0
+
+- name: set default shell to fish
+  become: yes
+  user:
+          name: "{{ ansible_user }}"
+          shell: "{{ which_fish.stdout }}"
+
 - name: install fish theme
   shell: "fisher install {{ fish_theme }}"
+  args:
+          executable: "{{ which_fish.stdout }}"
