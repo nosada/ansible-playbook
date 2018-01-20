@@ -25,6 +25,7 @@
           name: "{{ item }}"
   with_items:
           - alsi
+          - urlview
           - cower
           - mkosi
           - neovim-symlinks
