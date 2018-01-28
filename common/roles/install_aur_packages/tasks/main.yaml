@@ -7,32 +7,17 @@
                 - vim
                 - vim-runtime
 
-- name: create pacaur/ to ${HOME}/.cache/
-  file:
-          name: "/home/{{ ansible_user }}/.cache/pacaur/"
-          state: directory
-          mode: 0755
-          owner: "{{ ansible_user }}"
-          group: "{{ ansible_user }}"
+- name: install neovim-symlinks
+  include_tasks: library/aur/pkg.yml pkg_name=neovim-symlinks
 
+- name: install alsi
+  include_tasks: library/aur/pkg.yml pkg_name=alsi
 
-- name: install daily-used AUR packages
-  become: yes
-  aur:
-          skip_pgp: yes
-          user: "{{ ansible_user }}"
-          dir: "/home/{{ ansible_user }}/.cache/pacaur/"
-          name: "{{ item }}"
-  with_items:
-          - alsi
-          - urlview
-          - cower
-          - mkosi
-          - neovim-symlinks
-          - pacaur
-          - python-lolcat
+- name: install mkosi
+  include_tasks: library/aur/pkg.yml pkg_name=mkosi
 
-- name: remove aur/ on ${HOME}/
-  file:
-          name: "/home/{{ ansible_user }}/aur"
-          state: absent
+- name: install python-lolcat
+  include_tasks: library/aur/pkg.yml pkg_name=python-lolcat
+
+- name: install urlview
+  include_tasks: library/aur/pkg.yml pkg_name=urlview
