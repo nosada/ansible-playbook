@@ -1,3 +1,0 @@
-[submodule "common/library/ansible-aur"]
-	path = common/library/ansible-aur
-	url = https://github.com/pigmonkey/ansible-aur.git
