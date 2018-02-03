@@ -1,27 +1,41 @@
-- name: activate update_container.service
+- name: activate update-container.service
   systemd:
-          daemon_reload: yes
+          daemon-reload: yes
           enabled: yes
-          name: update_container.service
+          name: update-container.service
           state: restarted
 
-- name: activate update_container.timer
+- name: activate update-container.timer
   systemd:
-          daemon_reload: yes
+          daemon-reload: yes
           enabled: yes
-          name: update_container.timer
+          name: update-container.timer
           state: restarted
 
-- name: activate wake_up_nginx.service
+- name: activate wake-up-nginx.service
   systemd:
-          daemon_reload: yes
+          daemon-reload: yes
           enabled: yes
-          name: wake_up_nginx.service
+          name: wake-up-nginx.service
           state: restarted
 
-- name: activate wake_up_nginx.timer
+- name: activate wake-up-nginx.timer
   systemd:
-          daemon_reload: yes
+          daemon-reload: yes
           enabled: yes
-          name: wake_up_nginx.timer
+          name: wake-up-nginx.timer
+          state: restarted
+
+- name: activate wake-up-container.service
+  systemd:
+          daemon-reload: yes
+          enabled: yes
+          name: wake-up-container.service
+          state: restarted
+
+- name: activate wake-up-container.timer
+  systemd:
+          daemon-reload: yes
+          enabled: yes
+          name: wake-up-container.timer
           state: restarted

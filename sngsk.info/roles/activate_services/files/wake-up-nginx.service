@@ -3,4 +3,4 @@ Description=wake up nginx
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/bin/wake_up_nginx
+ExecStart=/usr/local/bin/wake-up-nginx

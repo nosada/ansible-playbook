@@ -1,51 +1,69 @@
-- name: install update_arch_nspawn_container to /usr/local/bin/
+- name: install update-arch-nspawn-container to /usr/local/bin/
   copy:
-          src: update_arch_nspawn_container
+          src: update-arch-nspawn-container
           dest: /usr/local/bin
           mode: 0755
           owner: root
           group: root
 
-- name: install wake_up_nginx to /usr/local/bin/
+- name: install wake-up-nginx to /usr/local/bin/
   copy:
-          src: wake_up_nginx
+          src: wake-up-nginx
           dest: /usr/local/bin
           mode: 0755
           owner: root
           group: root
 
-- name: install update_container.service
+- name: install update-container.service
   copy:
-          src: update_container.service
-          dest: /etc/systemd/system/update_container.service
+          src: update-container.service
+          dest: /etc/systemd/system/update-container.service
           mode: 0644
           owner: root
           group: root
-  notify: activate update_container.service
+  notify: activate update-container.service
 
-- name: install update_container.timer
+- name: install update-container.timer
   copy:
-          src: update_container.service
-          dest: /etc/systemd/system/update_container.service
+          src: update-container.service
+          dest: /etc/systemd/system/update-container.service
           mode: 0644
           owner: root
           group: root
-  notify: activate update_container.timer
+  notify: activate update-container.timer
 
-- name: install wake_up_nginx.service
+- name: install wake-up-nginx.service
   copy:
-          src: wake_up_nginx.service
-          dest: /etc/systemd/system/wake_up_nginx.service
+          src: wake-up-nginx.service
+          dest: /etc/systemd/system/wake-up-nginx.service
           mode: 0644
           owner: root
           group: root
-  notify: activate wake_up_nginx.service
+  notify: activate wake-up-nginx.service
 
-- name: install wake_up_nginx.timer
+- name: install wake-up-nginx.timer
   copy:
-          src: wake_up_nginx.timer
-          dest: /etc/systemd/system/wake_up_nginx.timer
+          src: wake-up-nginx.timer
+          dest: /etc/systemd/system/wake-up-nginx.timer
           mode: 0644
           owner: root
           group: root
-  notify: activate wake_up_nginx.timer
+  notify: activate wake-up-nginx.timer
+
+- name: install wake-up-container.service
+  copy:
+          src: wake-up-container.service
+          dest: /etc/systemd/system/wake-up-container.service
+          mode: 0644
+          owner: root
+          group: root
+  notify: activate wake-up-container.service
+
+- name: install wake-up-container.timer
+  copy:
+          src: wake-up-container.timer
+          dest: /etc/systemd/system/wake-up-container.timer
+          mode: 0644
+          owner: root
+          group: root
+  notify: activate wake-up-container.timer

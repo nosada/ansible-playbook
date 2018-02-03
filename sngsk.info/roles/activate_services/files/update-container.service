@@ -3,4 +3,4 @@ Description=update arch linux nspawn container
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/bin/update_arch_nspawn_container
+ExecStart=/usr/local/bin/update-arch-nspawn-container
