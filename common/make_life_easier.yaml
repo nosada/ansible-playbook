@@ -3,14 +3,19 @@
   roles:
           -  symlink_cache_to_shm
 
-- name: set up packages and configs
+- name: install packages and configs
+  become: yes
   hosts: common
   roles:
           - install_arch_packages
+          - install_configs
+
+- name: install AUR packages
+  hosts: common
           - install_aur_packages
-          - install_configs_and_set_up_user
 
 - name: set up fish shell
   hosts: common
   roles:
           - set_up_fish_shell
+          - set_up_user_environment

@@ -11,31 +11,3 @@
           enabled: yes
           name: ip6tables.service
           state: restarted
-
-- name: restart sshd.service
-  systemd:
-          daemon_reload: yes
-          enabled: yes
-          name: sshd.service
-          state: restarted
-
-- name: restart unbound.service
-  systemd:
-          daemon_reload: yes
-          enabled: yes
-          name: unbound.service
-          state: restarted
-
-- name: restart systemd-networkd.service
-  systemd:
-          daemon_reload: yes
-          enabled: yes
-          name: systemd-networkd.service
-          state: restarted
-
-- name: restart systemd-resolved.service
-  systemd:
-          daemon_reload: yes
-          enabled: yes
-          name: systemd-resolved.service
-          state: restarted

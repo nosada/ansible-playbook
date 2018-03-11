@@ -4,3 +4,6 @@
 # contentes deployed by ansible
 hosts
 .gitconfig
+iptables.rules
+ip6tables.rules
+sshd_config

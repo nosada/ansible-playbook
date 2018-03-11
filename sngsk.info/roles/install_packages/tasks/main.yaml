@@ -9,10 +9,6 @@
   pacman:
           state: latest
           name:
-                  - arch-install-scripts
                   - certbot
                   - certbot-nginx
-                  - git
                   - nginx
-                  - reflector
-                  - unbound
