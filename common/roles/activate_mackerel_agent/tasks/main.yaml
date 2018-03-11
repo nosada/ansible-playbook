@@ -1,0 +1,11 @@
+- name: upgrade packages and package databases
+  become: yes
+  command: "mackerel-agent init -apikey={{ mackerel_api_key }}"
+
+- name: activate mackerel-agent
+  become: yes
+  systemd:
+          daemon-reload: yes
+          enabled: yes
+          name: mackerel-agent.service
+          state: restarted

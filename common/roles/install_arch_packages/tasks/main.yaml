@@ -10,13 +10,23 @@
   pacman:
           state: latest
           name:
-                - cowsay
-                - colordiff
-                - fortune-mod
-                - fish
-                - fzf
-                - neovim
-                - tmux
+                  - base-devel
+                  - btrfs-progs
+                  - cowsay
+                  - colordiff
+                  - dfc
+                  - fortune-mod
+                  - fish
+                  - fzf
+                  - go
+                  - htop
+                  - neovim
+                  - polkit
+                  - perl
+                  - perl-data-dump
+                  - rsync
+                  - tmux
+                  - tree
 
 - name: install base-devel package group
   become: yes
