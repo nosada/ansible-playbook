@@ -33,8 +33,8 @@
 
 - name: install update-container.timer
   copy:
-          src: update-container.service
-          dest: /etc/systemd/system/update-container.service
+          src: update-container.timer
+          dest: /etc/systemd/system/update-container.timer
           mode: 0644
           owner: root
           group: root
