@@ -30,12 +30,12 @@
   with_items:
           "{{ running_containers.results }}"
 
-- name: disable old containers
-  shell: "machinectl disable {{ item.item }}"
-  when:
-          item.rc == 0
-  with_items:
-          "{{ existence_of_containers.results }}"
+# - name: disable old containers
+#   shell: "machinectl disable {{ item.item }}"
+#   when:
+#           item.rc == 0
+#   with_items:
+#           "{{ existence_of_containers.results }}"
 
 - name: remove old containers
   shell: "machinectl remove {{ item.item }}"
@@ -59,7 +59,7 @@
           - "{{ containers }}"
   notify:
           - enable machines.target for starting systemd-nspawn at booting up
-          - enable nspawn container
+          # - enable nspawn container
           - start nspawn container
           - restart nginx
 
