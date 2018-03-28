@@ -12,6 +12,7 @@
 
 - name: install AUR packages
   hosts: common
+  roles:
           - install_aur_packages
 
 - name: set up fish shell
