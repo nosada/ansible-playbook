@@ -7,8 +7,8 @@
   become: yes
   hosts: common
   roles:
-          - install_arch_packages
           - install_configs
+          - install_arch_packages
 
 - name: install AUR packages
   hosts: common
