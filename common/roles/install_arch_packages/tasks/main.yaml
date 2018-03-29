@@ -34,3 +34,10 @@
           state: latest
           name:
                   - base-devel
+
+- name: downgrade systemd and libsystemd
+  become: yes
+  shell: "yes | pacman -U {{ item }}"
+  with_items:
+          - https://archive.archlinux.org/packages/s/systemd/systemd-238.0-3-x86_64.pkg.tar.xz
+          - https://archive.archlinux.org/packages/l/libsystemd/libsystemd-238.0-3-x86_64.pkg.tar.xz

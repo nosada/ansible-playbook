@@ -1,8 +1,6 @@
-- name: upgrade packages and package databases
+- name: update package databases
   become: yes
   pacman:
-          state: latest
-          upgrade: yes
           update_cache: yes
 
 - name: install required packages for sngsk.info
