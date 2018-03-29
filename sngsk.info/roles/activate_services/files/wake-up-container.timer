@@ -1,5 +1,5 @@
 [Unit]
-Description=wake up nginx
+Description=wake up container installed in the host (per 5mins)
 
 [Timer]
 OnBootSec=1min
