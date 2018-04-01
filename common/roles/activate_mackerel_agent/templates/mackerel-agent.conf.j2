@@ -2,9 +2,8 @@ apikey = "{{ mackerel_api_key }}"
 pidfile = "/var/run/mackerel-agent.pid"
 root = "/var/lib/mackerel-agent"
 verbose = false
+include = "/etc/mackerel-agent/conf.d/*.conf"
 
 [host_status]
 on_start = "working"
 on_stop  = "poweroff"
-
-include = "/etc/mackerel-agent/conf.d/*.conf"
