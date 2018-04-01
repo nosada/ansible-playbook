@@ -16,8 +16,10 @@
                   - fortune-mod
                   - fish
                   - fzf
-                  - go
+                  - geoip
+                  - geoip-database
                   - git
+                  - go
                   - htop
                   - jq
                   - neovim
