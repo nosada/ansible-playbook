@@ -10,6 +10,16 @@
 - name: deploy dotfiles
   shell: "/home/{{ ansible_user }}/.dotfiles/deploy.sh"
 
+- name: download personal scripts
+  git:
+          force: yes
+          repo: https://github.com/nosada/scripts.git
+          dest: "/tmp/scripts"
+
+- name: install personal scripts
+  become: yes
+  shell: "cd /tmp/scripts; make install"
+
 - name: install .gitconfig to ${HOME}
   copy:
           src: .gitconfig
