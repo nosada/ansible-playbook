@@ -36,3 +36,9 @@
 
 - name: install urlview
   include_tasks: library/aur/pkg.yml pkg_name=urlview
+
+- name: install mackerel-agent-plugins-git
+  include_tasks: library/aur/pkg.yml pkg_name=mackerel-agent-plugins-git
+
+- name: install mackerel-check-plugins-git
+  include_tasks: library/aur/pkg.yml pkg_name=mackerel-check-plugins-git

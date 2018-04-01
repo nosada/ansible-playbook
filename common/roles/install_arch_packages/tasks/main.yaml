@@ -19,6 +19,7 @@
                   - go
                   - git
                   - htop
+                  - jq
                   - neovim
                   - polkit
                   - perl
