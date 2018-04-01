@@ -3,3 +3,11 @@
   become: yes
   roles:
           - set_up_mastodon_on_sngsk.info
+
+- name: configure mackerel-agent
+  hosts: sngsk.info
+  become: yes
+  roles:
+          - install_mackerel_conf_for_mastodon.sngsk.info
+  vars:
+          container: mstdnspawn

@@ -20,7 +20,6 @@
   until: result.rc == 0
   retries: 3
   delay: 1
-  ignore_erroes: yes
   with_items:
           "{{ containers }}"
 

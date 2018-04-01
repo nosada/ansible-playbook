@@ -20,3 +20,11 @@
   roles:
           - install_sngsk.info_configs
           - activate_services
+
+- name: configure mackerel-agent
+  hosts: sngsk.info
+  become: yes
+  roles:
+          - install_mackerel_conf_for_sngsk.info
+  vars:
+          container: sngskspawn
