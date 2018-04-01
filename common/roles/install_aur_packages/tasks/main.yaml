@@ -45,3 +45,7 @@
 - name: install mackerel-check-plugins-git
   include_tasks: library/aur/pkg.yml pkg_name=mackerel-check-plugins-git
   when: mackerel_api_key is defined
+
+- name: install mkr
+  include_tasks: library/aur/pkg.yml pkg_name=mkr
+  when: mackerel_api_key is defined
