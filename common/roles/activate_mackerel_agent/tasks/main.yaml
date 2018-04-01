@@ -1,13 +1,10 @@
-- name: upgrade packages and package databases
+- name: install mackerel-agent config
   become: yes
-  command: "mackerel-agent init -apikey={{ mackerel_api_key }}"
-  when: mackerel_api_key is defined
-
-- name: activate mackerel-agent
-  become: yes
-  systemd:
-          daemon-reload: yes
-          enabled: yes
-          name: mackerel-agent.service
-          state: restarted
+  template:
+          src: mackerel-agent.conf.j2
+          dest: /etc/mackerel-agent/mackere-agent.conf
+          mode: 0644
+          owner: root
+          group: root
+  notify: activate mackerel-agent
   when: mackerel_api_key is defined
