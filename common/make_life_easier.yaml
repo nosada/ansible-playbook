@@ -21,3 +21,8 @@
   roles:
           - set_up_user_environment
           - set_up_fish_shell
+
+- name: activate mackerel-agent
+  hosts: common
+  roles:
+          - activate_mackerel_agent
