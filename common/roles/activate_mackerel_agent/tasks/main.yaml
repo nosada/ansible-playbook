@@ -1,6 +1,7 @@
 - name: upgrade packages and package databases
   become: yes
   command: "mackerel-agent init -apikey={{ mackerel_api_key }}"
+  when: mackerel_api_key is defined
 
 - name: activate mackerel-agent
   become: yes
@@ -9,3 +10,4 @@
           enabled: yes
           name: mackerel-agent.service
           state: restarted
+  when: mackerel_api_key is defined

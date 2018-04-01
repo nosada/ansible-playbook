@@ -28,17 +28,20 @@
 - name: install mkosi
   include_tasks: library/aur/pkg.yml pkg_name=mkosi
 
-- name: install mackerel-agent
-  include_tasks: library/aur/pkg.yml pkg_name=mackerel-agent
-
 - name: install python-lolcat
   include_tasks: library/aur/pkg.yml pkg_name=python-lolcat
 
 - name: install urlview
   include_tasks: library/aur/pkg.yml pkg_name=urlview
 
+- name: install mackerel-agent
+  include_tasks: library/aur/pkg.yml pkg_name=mackerel-agent
+  when: mackerel_api_key is defined
+
 - name: install mackerel-agent-plugins-git
   include_tasks: library/aur/pkg.yml pkg_name=mackerel-agent-plugins-git
+  when: mackerel_api_key is defined
 
 - name: install mackerel-check-plugins-git
   include_tasks: library/aur/pkg.yml pkg_name=mackerel-check-plugins-git
+  when: mackerel_api_key is defined
