@@ -19,5 +19,5 @@
 - name: set up fish shell
   hosts: common
   roles:
-          - set_up_fish_shell
           - set_up_user_environment
+          - set_up_fish_shell
