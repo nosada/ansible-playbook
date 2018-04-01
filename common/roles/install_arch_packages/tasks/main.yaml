@@ -26,6 +26,7 @@
                   - polkit
                   - perl
                   - perl-data-dump
+                  - python-setuptools
                   - reflector
                   - rsync
                   - unbound
