@@ -8,6 +8,7 @@
   hosts: common
   roles:
           - install_configs
+          - install_connection_configs
           - install_arch_packages
 
 - name: install AUR packages

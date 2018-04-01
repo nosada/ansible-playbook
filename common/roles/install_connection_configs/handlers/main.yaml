@@ -1,20 +1,20 @@
-- name: restart unbound.service
+- name: restart iptables.service
   systemd:
           daemon_reload: yes
           enabled: yes
-          name: unbound.service
+          name: iptables.service
           state: restarted
 
-- name: restart systemd-networkd.service
+- name: restart ip6tables.service
   systemd:
           daemon_reload: yes
           enabled: yes
-          name: systemd-networkd.service
+          name: ip6tables.service
           state: restarted
 
-- name: restart systemd-resolved.service
+- name: restart sshd.service
   systemd:
           daemon_reload: yes
           enabled: yes
-          name: systemd-resolved.service
+          name: sshd.service
           state: restarted
