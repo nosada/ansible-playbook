@@ -22,6 +22,14 @@
           owner: root
           group: root
 
+- name: install makepkg.conf
+  copy:
+          src: makepkg.conf
+          dest: /etc/makepkg.conf
+          mode: 0644
+          owner: root
+          group: root
+
 - name: install nsswitch.conf to /etc/nsswitch.conf
   copy:
           src: nsswitch.conf

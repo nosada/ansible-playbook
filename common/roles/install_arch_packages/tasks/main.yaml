@@ -9,7 +9,9 @@
           state: latest
           name:
                   - arch-install-scripts
+                  - aria2
                   - btrfs-progs
+                  - ccache
                   - cowsay
                   - colordiff
                   - dfc
@@ -23,6 +25,7 @@
                   - htop
                   - jq
                   - neovim
+                  - optipng
                   - pacmatic
                   - pacutils
                   - polkit
@@ -32,6 +35,7 @@
                   - reflector
                   - rsync
                   - unbound
+                  - upx
                   - tmux
                   - tree
 
