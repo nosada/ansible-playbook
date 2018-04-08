@@ -23,6 +23,8 @@
                   - htop
                   - jq
                   - neovim
+                  - pacmatic
+                  - pacutils
                   - polkit
                   - perl
                   - perl-data-dump
