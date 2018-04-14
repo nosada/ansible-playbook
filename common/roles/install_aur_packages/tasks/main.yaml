@@ -31,6 +31,9 @@
 - name: install python-lolcat
   include_tasks: library/aur/pkg.yml pkg_name=python-lolcat
 
+- name: install ghq
+  include_tasks: library/aur/pkg.yml pkg_name=ghq
+
 - name: install urlview
   include_tasks: library/aur/pkg.yml pkg_name=urlview
 

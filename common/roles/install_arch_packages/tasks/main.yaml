@@ -44,22 +44,3 @@
           state: latest
           name:
                   - base-devel
-
-#- name: download older systemd package
-#  become: yes
-#  get_url:
-#          url: https://archive.archlinux.org/packages/s/systemd/systemd-238.0-3-x86_64.pkg.tar.xz
-#          dest: /tmp/systemd-238.0-3-x86_64.pkg.tar.xz
-#
-#- name: download older libsystemd package
-#  become: yes
-#  get_url:
-#          url: https://archive.archlinux.org/packages/l/libsystemd/libsystemd-238.0-3-x86_64.pkg.tar.xz
-#          dest: /tmp/libsystemd-238.0-3-x86_64.pkg.tar.xz
-#
-#- name: downgrade systemd and libsystemd
-#  become: yes
-#  shell: "pacman -U --noconfirm {{ item }}"
-#  with_items:
-#          - /tmp/systemd-238.0-3-x86_64.pkg.tar.xz
-#          - /tmp/libsystemd-238.0-3-x86_64.pkg.tar.xz
