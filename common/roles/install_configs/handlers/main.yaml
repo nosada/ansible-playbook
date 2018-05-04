@@ -1,3 +1,10 @@
+- name: restart dnscrypt-proxy.service
+  systemd:
+          daemon_reload: yes
+          enabled: yes
+          name: dnscrypt-proxy.service
+          state: restarted
+
 - name: restart unbound.service
   systemd:
           daemon_reload: yes
