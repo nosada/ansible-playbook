@@ -48,7 +48,6 @@
   notify:
           - restart dnscrypt-proxy.service
 
-
 - name: install unbound.conf to /etc/unbound/
   copy:
           src: unbound.conf
