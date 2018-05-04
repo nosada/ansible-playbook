@@ -66,7 +66,30 @@
           owner: root
           group: root
   notify:
-          - restart unbound.service
+          - restart systemd-networkd.service
+          - restart systemd-resolved.service
+
+- name: check /etc/resolv.conf
+  stat:
+          path: /etc/resolv.conf
+  register:
+          resolv_conf_status
+
+- name: remove /etc/resolv.conf
+  file:
+          path: /etc/resolv.conf
+          state: absent
+  when:
+          resolv_conf_status.stat.exists
+
+- name: install /etc/resolv.conf
+  copy:
+          src: resolv.conf
+          dest: /etc/resolv.conf
+          mode: 0644
+          owner: root
+          group: root
+  notify:
           - restart systemd-networkd.service
           - restart systemd-resolved.service
 
