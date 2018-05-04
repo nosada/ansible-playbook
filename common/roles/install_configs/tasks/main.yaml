@@ -39,6 +39,7 @@
           group: root
 
 - name: install dnscrypt-proxy.toml to /etc/dnscrypt-proxy/
+  copy:
           src: dnscrypt-proxy.toml
           dest: /etc/dnscrypt-proxy/dnscrypt-proxy.toml
           mode: 0644
