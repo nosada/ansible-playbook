@@ -18,7 +18,7 @@
 
 - name: install personal scripts
   become: yes
-  shell: "cd /tmp/scripts; make install"
+  shell: "cd /tmp/scripts; cp qutebrowser/config.json.tmpl qutebrowser/config.json; make install"
 
 - name: install .gitconfig to ${HOME}
   copy:
