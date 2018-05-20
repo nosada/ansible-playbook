@@ -1,0 +1,13 @@
+[Unit]
+Description=Set host state on Mackerel to 'working'
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+Persistent=false
+OnBootSec=300
+OnCalendar= *-*-* 03:10:00
+Unit=set-working-on-mackerel.service
+
+[Install]
+WantedBy=timers.target

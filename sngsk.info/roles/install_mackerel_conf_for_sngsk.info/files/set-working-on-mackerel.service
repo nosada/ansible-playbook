@@ -1,0 +1,9 @@
+[Unit]
+Description=Set host state on Mackerel to 'working'
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mkr update --status working
+
+[Install]
+WantedBy=default.target

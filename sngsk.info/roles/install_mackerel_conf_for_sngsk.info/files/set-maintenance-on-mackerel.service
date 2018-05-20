@@ -1,0 +1,9 @@
+[Unit]
+Description=Set host state on Mackerel to 'maintenance'
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mkr update --status maintenance
+
+[Install]
+WantedBy=default.target
