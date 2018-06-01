@@ -27,6 +27,7 @@
                   - jq
                   - neovim
                   - optipng
+                  - pacman-contrib
                   - pacmatic
                   - pacutils
                   - polkit
