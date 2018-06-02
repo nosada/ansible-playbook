@@ -1,4 +1,8 @@
-- name: uninstall vi & vim for preparation of installing neovim-symlinks
+- name: check whether neovim-symlinks already installed
+  shell: "pacman -Qs neovim-symlinks"
+  register: neovim_symlinks_installed
+
+- name: uninstall vi & vim if neovim-symlinks NOT installed yet
   become: yes
   pacman:
           state: absent
@@ -6,6 +10,8 @@
                 - vi
                 - vim
                 - vim-runtime
+  when:
+          neovim_symlinks_installed.rc != 0
 
 - name: create symlink to /usr/bin/ for pod2man
   become: yes
