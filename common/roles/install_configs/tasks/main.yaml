@@ -106,5 +106,5 @@
           owner: root
           group: root
   with_items:
-          shm.conf
-          ramdisk.conf
+          - shm.conf
+          - ramdisk.conf
