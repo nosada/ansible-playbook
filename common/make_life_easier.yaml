@@ -1,7 +1,7 @@
 - name: set up home directory
   hosts: common
   roles:
-          -  symlink_cache_to_shm
+          -  symlink_cache_directory
 
 - name: install packages and configs
   become: yes

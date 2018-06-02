@@ -98,10 +98,13 @@
           name: en_US.UTF-8
           state: present
 
-- name: install shm.conf to /etc/tmpfiles.d/
+- name: install tmpfiles configs to /etc/tmpfiles.d/
   copy:
-          src: shm.conf
-          dest: /etc/tmpfiles.d/shm.conf
+          src: {{ item }}
+          dest: /etc/tmpfiles.d/{{ item }}
           mode: 0644
           owner: root
           group: root
+  with_items:
+          shm.conf
+          ramdisk.conf
