@@ -5,15 +5,6 @@
           - install_packages
           - install_configs
 
-- name: build and run nspawn container on sngsk.info
-  hosts: sngsk.info
-  become: yes
-  roles:
-          - prepare_nspawn_containers
-  vars:
-          containers:
-                  - sngskspawn
-
 - name: construct server as sngsk.info
   hosts: sngsk.info
   become: yes
@@ -26,5 +17,3 @@
   become: yes
   roles:
           - install_mackerel_conf_for_sngsk.info
-  vars:
-          container: sngskspawn

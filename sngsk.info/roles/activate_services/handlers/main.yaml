@@ -25,17 +25,3 @@
           enabled: yes
           name: wake-up-nginx.timer
           state: restarted
-
-- name: activate wake-up-container.service
-  systemd:
-          daemon-reload: yes
-          enabled: yes
-          name: wake-up-container.service
-          state: restarted
-
-- name: activate wake-up-container.timer
-  systemd:
-          daemon-reload: yes
-          enabled: yes
-          name: wake-up-container.timer
-          state: restarted

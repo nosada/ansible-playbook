@@ -1,6 +1,0 @@
-[Unit]
-Description=wake up container installed in the host
-
-[Service]
-Type=oneshot
-ExecStart=/usr/local/bin/wake-up-container
