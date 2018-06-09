@@ -1,0 +1,17 @@
+#!/bin/bash
+
+start-nspawn-container() {
+	for container in $(machinectl list-images | grep spawn | awk '{print $1}');
+	do
+		machinectl status $container 1> /dev/null 2> /dev/null
+		result=$?
+		if [ $result -eq 0  ]; then
+			echo "$container already running"
+		else
+			echo "$container not running yet, starting..."
+			machinectl start $container
+		fi
+	done
+}
+
+start-nspawn-container

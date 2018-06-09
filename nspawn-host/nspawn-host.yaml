@@ -1,0 +1,6 @@
+- name: build and run nspawn container
+  hosts: nspawn-host
+  become: yes
+  roles:
+          - prepare_nspawn_containers
+          - activate_services

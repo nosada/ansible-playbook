@@ -1,0 +1,25 @@
+- name: install wake-up-container to /usr/local/bin/
+  copy:
+          src: wake-up-container
+          dest: /usr/local/bin
+          mode: 0755
+          owner: root
+          group: root
+
+- name: install wake-up-container.service
+  copy:
+          src: wake-up-container.service
+          dest: /etc/systemd/system/wake-up-container.service
+          mode: 0644
+          owner: root
+          group: root
+  notify: activate wake-up-container.service
+
+- name: install wake-up-container.timer
+  copy:
+          src: wake-up-container.timer
+          dest: /etc/systemd/system/wake-up-container.timer
+          mode: 0644
+          owner: root
+          group: root
+  notify: activate wake-up-container.timer

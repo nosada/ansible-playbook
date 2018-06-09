@@ -1,0 +1,24 @@
+- name: enable machines.target for starting systemd-nspawn at booting up
+  systemd:
+          enabled: yes
+          name: machines.target
+          state: started
+
+- name: enable nspawn container
+  shell: "machinectl enable {{ item }}"
+  with_items:
+          "{{ containers }}"
+
+- name: poweroff nspawn container
+  shell: "machinectl poweroff {{ item }}"
+  with_items:
+          "{{ containers }}"
+
+- name: start nspawn container
+  shell: "machinectl start {{ item }}"
+  register: result
+  until: result.rc == 0
+  retries: 3
+  delay: 1
+  with_items:
+          "{{ containers }}"
