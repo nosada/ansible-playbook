@@ -1,14 +1,9 @@
-- name: construct server as host of nspawn container
+- name: construct server as sngsk.info
   hosts: sngsk.info
   become: yes
   roles:
           - install_packages
           - install_configs
-
-- name: construct server as sngsk.info
-  hosts: sngsk.info
-  become: yes
-  roles:
           - install_sngsk.info_configs
           - activate_services
 
