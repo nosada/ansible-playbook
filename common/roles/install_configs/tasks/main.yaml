@@ -47,6 +47,7 @@
           group: root
   notify:
           - restart dnscrypt-proxy.service
+          - disable and stop dnscrypt-proxy.socket
 
 - name: install unbound.conf to /etc/unbound/
   copy:
