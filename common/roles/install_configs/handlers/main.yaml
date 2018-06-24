@@ -29,6 +29,6 @@
 - name: restart systemd-resolved.service
   systemd:
           daemon_reload: yes
-          enabled: yes
+          enabled: no
           name: systemd-resolved.service
           state: restarted
