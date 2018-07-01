@@ -29,7 +29,6 @@
                   - optipng
                   - pacman-contrib
                   - pacmatic
-                  - pacutils
                   - polkit
                   - perl
                   - perl-data-dump

@@ -17,7 +17,7 @@
   become: yes
   file:
           src: /usr/bin/core_perl/pod2man
-          dest: /usr/bin//pod2man
+          dest: /usr/bin/pod2man
           owner: root
           group: root
           state: link
@@ -25,8 +25,8 @@
 - name: install neovim-symlinks
   include_tasks: library/aur/pkg.yml pkg_name=neovim-symlinks
 
-- name: install alsi
-  include_tasks: library/aur/pkg.yml pkg_name=alsi
+- name: install neofetch-git
+  include_tasks: library/aur/pkg.yml pkg_name=neofetch-git
 
 - name: install cdu
   include_tasks: library/aur/pkg.yml pkg_name=cdu
