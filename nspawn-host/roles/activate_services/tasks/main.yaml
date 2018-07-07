@@ -1,4 +1,5 @@
 - name: install wake-up-container to /usr/local/bin/
+  become: yes
   copy:
           src: wake-up-container
           dest: /usr/local/bin
@@ -7,6 +8,7 @@
           group: root
 
 - name: install wake-up-container.service
+  become: yes
   copy:
           src: wake-up-container.service
           dest: /etc/systemd/system/wake-up-container.service
@@ -16,6 +18,7 @@
   notify: activate wake-up-container.service
 
 - name: install wake-up-container.timer
+  become: yes
   copy:
           src: wake-up-container.timer
           dest: /etc/systemd/system/wake-up-container.timer

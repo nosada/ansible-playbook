@@ -1,9 +1,11 @@
 - name: remove existing /opt/mkosi-files
+  become: yes
   file:
           name: /opt/mkosi-files
           state: absent
 
 - name: clone mkosi-files repository
+  become: yes
   git:
           repo: https://github.com/nosada/mkosi-files.git
           dest: /opt/mkosi-files
@@ -24,6 +26,7 @@
   failed_when: false
 
 - name: stop old containers
+  become: yes
   shell: "machinectl stop {{ item.item }}"
   when:
           item.rc == 0
@@ -31,6 +34,7 @@
           "{{ running_containers.results }}"
 
 - name: disable old containers
+  become: yes
   shell: "machinectl disable {{ item.item }}"
   when:
           item.rc == 0
@@ -38,6 +42,7 @@
           "{{ existence_of_containers.results }}"
 
 - name: remove old containers
+  become: yes
   shell: "machinectl remove {{ item.item }}"
   when:
           item.rc == 0
@@ -45,6 +50,7 @@
           "{{ existence_of_containers.results }}"
 
 - name: build container
+  become: yes
   make:
           chdir: "/opt/mkosi-files/{{ item }}"
           target: image
@@ -52,6 +58,7 @@
           - "{{ containers }}"
 
 - name: install container
+  become: yes
   make:
           chdir: "/opt/mkosi-files/{{ item }}"
           target: install
@@ -63,6 +70,7 @@
           - start nspawn container
 
 - name: clean container
+  become: yes
   make:
           chdir: "/opt/mkosi-files/{{ item }}"
           target: clean

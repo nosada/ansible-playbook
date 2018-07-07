@@ -46,9 +46,13 @@
           name:
                   - base-devel
 
+- name: clean package cache for 'pacman -U'
+  become: yes
+  shell: "pacman --noconfirm -Scc"
+
 - name: downgrade systemd and libsystemd
   become: yes
-  shell: "yes | pacman -U {{ item }}"
+  shell: "pacman --noconfirm -U {{ item }}"
   with_items:
           - https://archive.archlinux.org/packages/s/systemd/systemd-238.133-4-x86_64.pkg.tar.xz
           - https://archive.archlinux.org/packages/l/libsystemd/libsystemd-238.133-4-x86_64.pkg.tar.xz

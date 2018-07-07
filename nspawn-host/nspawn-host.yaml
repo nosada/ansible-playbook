@@ -1,6 +1,5 @@
 - name: build and run nspawn container
   hosts: common
-  become: yes
   roles:
           - prepare_nspawn_containers
           - activate_services
