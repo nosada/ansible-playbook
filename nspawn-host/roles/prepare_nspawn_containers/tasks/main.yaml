@@ -12,14 +12,14 @@
           track_submodules: yes
 
 - name: check existence of containers
-  shell: "machinectl list-images | grep {{ item }}"
+  shell: "machinectl show-image {{ item }}"
   register: existence_of_containers
   with_items:
           - "{{ containers }}"
   failed_when: false
 
 - name: check running of containers
-  shell: "machinectl list | grep {{ item }}"
+  shell: "machinectl status {{ item }}"
   register: running_containers
   with_items:
           - "{{ containers }}"
