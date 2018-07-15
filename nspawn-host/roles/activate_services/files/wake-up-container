@@ -1,7 +1,7 @@
 #!/bin/bash
 
 start-nspawn-container() {
-	for container in $(/var/lib/machines | cut -d '.' -f 1);
+	for container in $(ls /var/lib/machines | cut -d '.' -f 1);
 	do
 		machinectl status $container 1> /dev/null 2> /dev/null
 		result=$?
