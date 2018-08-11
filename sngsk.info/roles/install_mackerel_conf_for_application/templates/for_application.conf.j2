@@ -1,0 +1,2 @@
+[plugin.checks.check_{{ item | regex_replace('.', '_') }}]
+command = "check-http -u https://{{ item }}"

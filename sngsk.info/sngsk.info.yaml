@@ -11,4 +11,5 @@
   hosts: sngsk.info
   become: yes
   roles:
-          - install_mackerel_conf_for_sngsk.info
+          - install_mackerel_conf_for_application
+          - install_mackerel_conf_for_nspawn_container

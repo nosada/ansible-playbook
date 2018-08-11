@@ -1,9 +1,11 @@
 - name: install mackerel-agent config for mstdnspawn
   become: yes
   template:
-          src: mastodon.sngsk.info.conf.j2
-          dest: /etc/mackerel-agent/conf.d/mastodon.sngsk.info.conf
+          src: for_application.conf.j2
+          dest: "/etc/mackerel-agent/conf.d/{{ item }}.conf"
           mode: 0644
           owner: root
           group: root
+  with_items:
+          - "{{ domains }}"
   notify: activate mackerel-agent

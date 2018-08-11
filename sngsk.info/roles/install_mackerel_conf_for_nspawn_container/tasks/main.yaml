@@ -1,11 +1,13 @@
-- name: install mackerel-agent config for sngskspawn
+- name: install mackerel-agent config for nspawn_containers
   become: yes
   template:
-          src: sngsk.info.conf.j2
-          dest: /etc/mackerel-agent/conf.d/sngsk.info.conf
+          src: for_container.conf.j2
+          dest: "/etc/mackerel-agent/conf.d/{{ item }}.conf"
           mode: 0644
           owner: root
           group: root
+  with_items:
+          - "{{ containers }}"
   notify: activate mackerel-agent
 
 - name: install set-maintenance-on-mackerel.service
