@@ -1,8 +1,17 @@
 #!/bin/bash
 
-NGINX_STATUS=`systemctl status nginx | grep Active | grep running`
+while read -r ALERT; do
+	echo $ALERT
+	if [[ $(echo $ALERT | egrep 'HTTP.1.1 502|connection refused') ]]; then
+		echo "Mackrel alerts what seems to be caused by around Nginx."
+		echo "Restart Nginx."
+		systemctl restart nginx
+	fi
+done < <(mkr alerts | jq -r '.[] | .status + "," + .message')
+
+NGINX_STATUS=$(systemctl status nginx | grep Active | grep running)
 if [ "${NGINX_STATUS}" != "" ]; then
-	echo "Nginx wakes up."
+	echo "Nginx already woke up."
 else
 	echo "Nginx isn't running. Start Nginx."
 	systemctl start nginx
