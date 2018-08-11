@@ -5,31 +5,3 @@
           enabled: yes
           name: mackerel-agent.service
           state: restarted
-
-- name: activate set-maintenance-on-mackerel.service
-  systemd:
-          daemon-reload: yes
-          enabled: yes
-          name: set-maintenance-on-mackerel.service
-          state: restarted
-
-- name: activate set-maintenance-on-mackerel.timer
-  systemd:
-          daemon-reload: yes
-          enabled: yes
-          name: set-maintenance-on-mackerel.timer
-          state: restarted
-
-- name: activate set-working-on-mackerel.service
-  systemd:
-          daemon-reload: yes
-          enabled: yes
-          name: set-working-on-mackerel.service
-          state: restarted
-
-- name: activate set-working-on-mackerel.timer
-  systemd:
-          daemon-reload: yes
-          enabled: yes
-          name: set-working-on-mackerel.timer
-          state: restarted

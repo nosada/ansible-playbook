@@ -49,3 +49,39 @@
           owner: root
           group: root
   notify: activate wake-up-nginx.timer
+
+- name: install set-maintenance-on-mackerel.service
+  copy:
+          src: set-maintenance-on-mackerel.service
+          dest: /etc/systemd/system/set-maintenance-on-mackerel.service
+          mode: 0644
+          owner: root
+          group: root
+  notify: activate set-maintenance-on-mackerel.service
+
+- name: install set-maintenance-on-mackerel.timer
+  copy:
+          src: set-maintenance-on-mackerel.timer
+          dest: /etc/systemd/system/set-maintenance-on-mackerel.timer
+          mode: 0644
+          owner: root
+          group: root
+  notify: activate set-maintenance-on-mackerel.timer
+
+- name: install set-working-on-mackerel.service
+  copy:
+          src: set-working-on-mackerel.service
+          dest: /etc/systemd/system/set-working-on-mackerel.service
+          mode: 0644
+          owner: root
+          group: root
+  notify: activate set-working-on-mackerel.service
+
+- name: install set-working-on-mackerel.timer
+  copy:
+          src: set-working-on-mackerel.timer
+          dest: /etc/systemd/system/set-working-on-mackerel.timer
+          mode: 0644
+          owner: root
+          group: root
+  notify: activate set-working-on-mackerel.timer
