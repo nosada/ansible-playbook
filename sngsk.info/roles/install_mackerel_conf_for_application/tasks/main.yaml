@@ -1,4 +1,4 @@
-- name: install mackerel-agent config for mstdnspawn
+- name: install mackerel-agent config for applications
   become: yes
   template:
           src: for_application.conf.j2

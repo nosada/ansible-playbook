@@ -1,4 +1,4 @@
-- name: install mackerel-agent config for nspawn_containers
+- name: install mackerel-agent config for nspawn containers
   become: yes
   template:
           src: for_container.conf.j2
