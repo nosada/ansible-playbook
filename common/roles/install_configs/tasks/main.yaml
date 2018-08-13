@@ -23,8 +23,8 @@
           group: root
 
 - name: install makepkg.conf
-  copy:
-          src: makepkg.conf
+  template:
+          src: makepkg.conf.j2
           dest: /etc/makepkg.conf
           mode: 0644
           owner: root
@@ -99,16 +99,21 @@
           name: en_US.UTF-8
           state: present
 
-- name: install tmpfiles configs to /etc/tmpfiles.d/
+- name: install shm.conf to /etc/tmpfiles.d/
   copy:
-          src: "{{ item }}"
-          dest: "/etc/tmpfiles.d/{{ item }}"
+          src: shm.conf
+          dest: /etc/tmpfiles.d/shm.conf
           mode: 0644
           owner: root
           group: root
-  with_items:
-          - shm.conf
-          - ramdisk.conf
+
+- name: install ramdisk.conf to /etc/tmpfiles.d/
+  template:
+          src: ramdisk.conf.j2
+          dest: /etc/tmpfiles.d/ramdisk.conf
+          mode: 0644
+          owner: root
+          group: root
 
 - name: create /et/docker
   file:

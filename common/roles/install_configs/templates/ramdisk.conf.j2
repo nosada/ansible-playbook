@@ -1,0 +1,4 @@
+d /ramdisk/{{ ansible_user }} 0755 {{ ansible_user }} {{ ansible_user }}
+d /ramdisk/cache 0777 root root
+d /ramdisk/scratch 0777 root root
+d /ramdisk/scratch/{{ ansible_user }} 0755 {{ ansible_user }} {{ ansible_user }}
