@@ -10,9 +10,7 @@ while read -r ALERT; do
 done < <(mkr alerts | jq -r '.[] | .status + "," + .message')
 
 NGINX_STATUS=$(systemctl status nginx | grep Active | grep running)
-if [ "${NGINX_STATUS}" != "" ]; then
-	echo "Nginx already woke up."
-else
+if [ "${NGINX_STATUS}" = "" ]; then
 	echo "Nginx isn't running. Start Nginx."
 	systemctl start nginx
 fi
