@@ -109,3 +109,13 @@
   with_items:
           - shm.conf
           - ramdisk.conf
+
+- name: install daemon.json to /etc/docker/
+  copy:
+          src: daemon.json
+          dest: /etc/docker/daemon.json
+          mode: 0644
+          owner: root
+          group: root
+  notify:
+          restart docker.service

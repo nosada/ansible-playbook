@@ -32,3 +32,10 @@
           enabled: yes
           name: systemd-resolved.service
           state: restarted
+
+- name: restart docker.service
+  systemd:
+          daemon_reload: yes
+          enabled: yes
+          name: docker.service
+          state: restarted
