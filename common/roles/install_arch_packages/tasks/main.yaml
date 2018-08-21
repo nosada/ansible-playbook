@@ -17,6 +17,7 @@
                   - dfc
                   - dnscrypt-proxy
                   - docker
+                  - docker-compose
                   - fortune-mod
                   - fish
                   - fzf
