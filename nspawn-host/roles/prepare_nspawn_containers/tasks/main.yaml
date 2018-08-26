@@ -1,78 +1,80 @@
 - name: remove existing /opt/mkosi-files
   become: yes
   file:
-          name: /opt/mkosi-files
-          state: absent
+    name: /opt/mkosi-files
+    state: absent
 
 - name: clone mkosi-files repository
   become: yes
   git:
-          repo: https://github.com/nosada/mkosi-files.git
-          dest: /opt/mkosi-files
-          track_submodules: yes
+    repo: https://github.com/nosada/mkosi-files.git
+    dest: /opt/mkosi-files
+    track_submodules: yes
 
 - name: check existence of containers
+  become: yes
   shell: "machinectl show-image {{ item }}"
   register: existence_of_containers
   with_items:
-          - "{{ containers }}"
+    - "{{ containers }}"
   failed_when: false
 
 - name: check running of containers
+  become: yes
   shell: "machinectl status {{ item }}"
   register: running_containers
   with_items:
-          - "{{ containers }}"
+    - "{{ containers }}"
   failed_when: false
 
 - name: stop old containers
   become: yes
   shell: "machinectl stop {{ item.item }}"
   when:
-          item.rc == 0
+    item.rc == 0
   with_items:
-          "{{ running_containers.results }}"
+    "{{ running_containers.results }}"
 
 - name: disable old containers
   become: yes
   shell: "machinectl disable {{ item.item }}"
   when:
-          item.rc == 0
+    item.rc == 0
   with_items:
-          "{{ existence_of_containers.results }}"
+    "{{ existence_of_containers.results }}"
 
 - name: remove old containers
   become: yes
   shell: "machinectl remove {{ item.item }}"
   when:
-          item.rc == 0
+    item.rc == 0
   with_items:
-          "{{ existence_of_containers.results }}"
+    "{{ existence_of_containers.results }}"
 
 - name: build container
   become: yes
   make:
-          chdir: "/opt/mkosi-files/{{ item }}"
-          target: image
+    chdir: "/opt/mkosi-files/{{ item }}"
+    target: image
   with_items:
-          - "{{ containers }}"
+    - "{{ containers }}"
 
 - name: install container
   become: yes
   make:
-          chdir: "/opt/mkosi-files/{{ item }}"
-          target: install
+    chdir: "/opt/mkosi-files/{{ item }}"
+    target: install
   with_items:
-          - "{{ containers }}"
+    - "{{ containers }}"
   notify:
-          - enable machines.target for starting systemd-nspawn at booting up
-          - enable nspawn container
-          - start nspawn container
+    - enable machines.target for starting systemd-nspawn at booting up
+    - enable nspawn container
+    - start nspawn container
 
 - name: clean container
   become: yes
   make:
-          chdir: "/opt/mkosi-files/{{ item }}"
-          target: clean
+    chdir: "/opt/mkosi-files/{{ item }}"
+    target: clean
   with_items:
-          - "{{ containers }}"
+    - "{{ containers }}"
