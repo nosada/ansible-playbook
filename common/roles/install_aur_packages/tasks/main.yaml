@@ -1,6 +1,7 @@
 - name: check whether neovim-symlinks already installed
   shell: "pacman -Qs neovim-symlinks"
   register: neovim_symlinks_installed
+  failed_when: false
 
 - name: uninstall vi & vim if neovim-symlinks NOT installed yet
   become: yes
