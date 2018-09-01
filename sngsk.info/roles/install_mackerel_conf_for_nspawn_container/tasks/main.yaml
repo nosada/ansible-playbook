@@ -1,3 +1,11 @@
+- name: create directory /etc/mackerel-agent/conf.d/
+  become: yes
+  file:
+    path: /etc/mackerel-agent/conf.d
+    state: directoty
+    owner : root
+    group: root
+
 - name: install mackerel-agent config for nspawn containers
   become: yes
   template:
