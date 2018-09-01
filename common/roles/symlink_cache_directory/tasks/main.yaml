@@ -8,8 +8,8 @@
           path: "/ramdisk/cache/"
           state: directory
 
-- name: create symlink ${HOME}/.cache to /dev/shm/cache
+- name: create symlink ${HOME}/.cache to /ramdisk/cache
   file:
-          src: "/dev/shm/cache/"
+          src: "/ramdisk/cache/"
           dest: "/home/{{ ansible_user }}/.cache"
           state: link
