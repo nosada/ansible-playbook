@@ -115,7 +115,7 @@
           owner: root
           group: root
 
-- name: create /et/docker
+- name: create /etc/docker
   file:
           path: /etc/docker
           state: directory

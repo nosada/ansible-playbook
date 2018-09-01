@@ -2,7 +2,7 @@
   become: yes
   file:
     path: /etc/mackerel-agent/conf.d
-    state: directoty
+    state: directory
     owner : root
     group: root
 
