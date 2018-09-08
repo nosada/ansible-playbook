@@ -1,8 +1,8 @@
 - name: download dotfile repository to homedir
   git:
-          force: yes
-          repo: https://github.com/nosada/dotfiles.git
-          dest: "/home/{{ ansible_user }}/.dotfiles"
+    force: yes
+    repo: https://github.com/nosada/dotfiles.git
+    dest: "/home/{{ ansible_user }}/.dotfiles"
 
 - name: clean dotfiles
   shell: "/home/{{ ansible_user }}/.dotfiles/clean.sh"
@@ -12,9 +12,9 @@
 
 - name: download personal scripts
   git:
-          force: yes
-          repo: https://github.com/nosada/scripts.git
-          dest: "/tmp/scripts"
+    force: yes
+    repo: https://github.com/nosada/scripts.git
+    dest: "/tmp/scripts"
 
 - name: install personal scripts
   become: yes
@@ -22,8 +22,8 @@
 
 - name: install .gitconfig to ${HOME}
   copy:
-          src: .gitconfig
-          dest: "/home/{{ ansible_user }}/.gitconfig"
-          mode: 0644
-          owner: "{{ ansible_user }}"
-          group: "{{ ansible_user }}"
+    src: .gitconfig
+    dest: "/home/{{ ansible_user }}/.gitconfig"
+    mode: 0644
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"

@@ -1,134 +1,134 @@
 - name: install pacman.conf
   copy:
-          src: pacman.conf
-          dest: /etc/pacman.conf
-          mode: 0644
-          owner: root
-          group: root
+    src: pacman.conf
+    dest: /etc/pacman.conf
+    mode: 0644
+    owner: root
+    group: root
 
 - name: create /etc/pacman.d/hooks
   file:
-          path: /etc/pacman.d/hooks
-          state: directory
-          mode: 0755
-          owner: root
-          group: root
+    path: /etc/pacman.d/hooks
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
 
 - name: install mirrorupgrade.hook to /etc/pacman.d/hooks
   copy:
-          src: mirrorupgrade.hook
-          dest: /etc/pacman.d/hooks/mirrorupgrade.hook
-          mode: 0644
-          owner: root
-          group: root
+    src: mirrorupgrade.hook
+    dest: /etc/pacman.d/hooks/mirrorupgrade.hook
+    mode: 0644
+    owner: root
+    group: root
 
 - name: install makepkg.conf
   template:
-          src: makepkg.conf.j2
-          dest: /etc/makepkg.conf
-          mode: 0644
-          owner: root
-          group: root
+    src: makepkg.conf.j2
+    dest: /etc/makepkg.conf
+    mode: 0644
+    owner: root
+    group: root
 
 - name: install nsswitch.conf to /etc/nsswitch.conf
   copy:
-          src: nsswitch.conf
-          dest: /etc/nsswitch.conf
-          mode: 0644
-          owner: root
-          group: root
+    src: nsswitch.conf
+    dest: /etc/nsswitch.conf
+    mode: 0644
+    owner: root
+    group: root
 
 - name: install dnscrypt-proxy.toml to /etc/dnscrypt-proxy/
   copy:
-          src: dnscrypt-proxy.toml
-          dest: /etc/dnscrypt-proxy/dnscrypt-proxy.toml
-          mode: 0644
-          owner: root
-          group: root
+    src: dnscrypt-proxy.toml
+    dest: /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+    mode: 0644
+    owner: root
+    group: root
   notify:
-          - restart dnscrypt-proxy.service
-          - disable and stop dnscrypt-proxy.socket
+    - restart dnscrypt-proxy.service
+    - disable and stop dnscrypt-proxy.socket
 
 - name: install unbound.conf to /etc/unbound/
   copy:
-          src: unbound.conf
-          dest: /etc/unbound/unbound.conf
-          mode: 0644
-          owner: root
-          group: root
+    src: unbound.conf
+    dest: /etc/unbound/unbound.conf
+    mode: 0644
+    owner: root
+    group: root
   notify:
-          - restart unbound.service
+    - restart unbound.service
 
 - name: install resolved.conf to /etc/systemd/
   copy:
-          src: resolved.conf
-          dest: /etc/systemd/resolved.conf
-          mode: 0644
-          owner: root
-          group: root
+    src: resolved.conf
+    dest: /etc/systemd/resolved.conf
+    mode: 0644
+    owner: root
+    group: root
   notify:
-          - restart systemd-networkd.service
-          - restart systemd-resolved.service
+    - restart systemd-networkd.service
+    - restart systemd-resolved.service
 
 - name: check /etc/resolv.conf
   stat:
-          path: /etc/resolv.conf
+    path: /etc/resolv.conf
   register:
-          resolv_conf_status
+    resolv_conf_status
 
 - name: remove /etc/resolv.conf
   file:
-          path: /etc/resolv.conf
-          state: absent
+    path: /etc/resolv.conf
+    state: absent
   when:
-          resolv_conf_status.stat.exists
+    resolv_conf_status.stat.exists
 
 - name: install /etc/resolv.conf
   copy:
-          src: resolv.conf
-          dest: /etc/resolv.conf
-          mode: 0644
-          owner: root
-          group: root
+    src: resolv.conf
+    dest: /etc/resolv.conf
+    mode: 0644
+    owner: root
+    group: root
   notify:
-          - restart systemd-networkd.service
-          - restart systemd-resolved.service
+    - restart systemd-networkd.service
+    - restart systemd-resolved.service
 
 - name: set locale as en_US.UTF-8
   locale_gen:
-          name: en_US.UTF-8
-          state: present
+    name: en_US.UTF-8
+    state: present
 
 - name: install shm.conf to /etc/tmpfiles.d/
   copy:
-          src: shm.conf
-          dest: /etc/tmpfiles.d/shm.conf
-          mode: 0644
-          owner: root
-          group: root
+    src: shm.conf
+    dest: /etc/tmpfiles.d/shm.conf
+    mode: 0644
+    owner: root
+    group: root
 
 - name: install ramdisk.conf to /etc/tmpfiles.d/
   template:
-          src: ramdisk.conf.j2
-          dest: /etc/tmpfiles.d/ramdisk.conf
-          mode: 0644
-          owner: root
-          group: root
+    src: ramdisk.conf.j2
+    dest: /etc/tmpfiles.d/ramdisk.conf
+    mode: 0644
+    owner: root
+    group: root
 
 - name: create /etc/docker
   file:
-          path: /etc/docker
-          state: directory
-          mode: 0755
-          owner: root
-          group: root
+    path: /etc/docker
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
 
 - name: install daemon.json to /etc/docker/
   copy:
-          src: daemon.json
-          dest: /etc/docker/daemon.json
-          mode: 0644
-          owner: root
-          group: root
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+    mode: 0644
+    owner: root
+    group: root
   notify:
-          restart docker.service
+    restart docker.service

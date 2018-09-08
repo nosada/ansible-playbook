@@ -1,41 +1,41 @@
 - name: restart dnscrypt-proxy.service
   systemd:
-          daemon_reload: yes
-          enabled: yes
-          name: dnscrypt-proxy.service
-          state: restarted
+    daemon_reload: yes
+    enabled: yes
+    name: dnscrypt-proxy.service
+    state: restarted
 
 - name: disable and stop dnscrypt-proxy.socket
   systemd:
-          daemon_reload: yes
-          enabled: no
-          name: dnscrypt-proxy.socket
-          state: stopped
+    daemon_reload: yes
+    enabled: no
+    name: dnscrypt-proxy.socket
+    state: stopped
 
 - name: restart unbound.service
   systemd:
-          daemon_reload: yes
-          enabled: yes
-          name: unbound.service
-          state: restarted
+    daemon_reload: yes
+    enabled: yes
+    name: unbound.service
+    state: restarted
 
 - name: restart systemd-networkd.service
   systemd:
-          daemon_reload: yes
-          enabled: yes
-          name: systemd-networkd.service
-          state: restarted
+    daemon_reload: yes
+    enabled: yes
+    name: systemd-networkd.service
+    state: restarted
 
 - name: restart systemd-resolved.service
   systemd:
-          daemon_reload: yes
-          enabled: yes
-          name: systemd-resolved.service
-          state: restarted
+    daemon_reload: yes
+    enabled: yes
+    name: systemd-resolved.service
+    state: restarted
 
 - name: restart docker.service
   systemd:
-          daemon_reload: yes
-          enabled: yes
-          name: docker.service
-          state: restarted
+    daemon_reload: yes
+    enabled: yes
+    name: docker.service
+    state: restarted

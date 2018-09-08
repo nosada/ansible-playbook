@@ -1,15 +1,15 @@
 - name: delete current ${HOME}/.cache
   file:
-          path: "/home/{{ ansible_user }}/.cache"
-          state: absent
+    path: "/home/{{ ansible_user }}/.cache"
+    state: absent
 
 - name: create /ramdisk/cache
   file:
-          path: "/ramdisk/cache/"
-          state: directory
+    path: "/ramdisk/cache/"
+    state: directory
 
 - name: create symlink ${HOME}/.cache to /ramdisk/cache
   file:
-          src: "/ramdisk/cache/"
-          dest: "/home/{{ ansible_user }}/.cache"
-          state: link
+    src: "/ramdisk/cache/"
+    dest: "/home/{{ ansible_user }}/.cache"
+    state: link

@@ -1,4 +1,4 @@
 - name: set instance hostname
   become: yes
   hostname:
-          name: "{{ inventory_hostname }}"
+    name: "{{ inventory_hostname }}"

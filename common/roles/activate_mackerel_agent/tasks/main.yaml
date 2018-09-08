@@ -1,19 +1,20 @@
 - name: install mackerel-agent config
   become: yes
   template:
-          src: mackerel-agent.conf.j2
-          dest: /etc/mackerel-agent/mackerel-agent.conf
-          mode: 0644
-          owner: root
-          group: root
+    src: mackerel-agent.conf.j2
+    dest: /etc/mackerel-agent/mackerel-agent.conf
+    mode: 0644
+    owner: root
+    group: root
   notify: activate mackerel-agent
   when: mackerel_api_key is defined
 
 - name: create directory /etc/mackerel-agent/conf.d/
   become: yes
   file:
-          path: /etc/mackerel-agent/conf.d
-          state: directory
-          mode: 0755
-          owner: root
-          group: root
+    path: /etc/mackerel-agent/conf.d
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+  when: mackerel_api_key is defined
