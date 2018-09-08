@@ -9,11 +9,11 @@
 - name: install mackerel-agent config for nspawn containers
   become: yes
   template:
-          src: for_container.conf.j2
-          dest: "/etc/mackerel-agent/conf.d/{{ item }}.conf"
-          mode: 0644
-          owner: root
-          group: root
+    src: for_container.conf.j2
+    dest: "/etc/mackerel-agent/conf.d/{{ item }}.conf"
+    mode: 0644
+    owner: root
+    group: root
   with_items:
-          - "{{ containers }}"
+    - "{{ containers }}"
   notify: activate mackerel-agent

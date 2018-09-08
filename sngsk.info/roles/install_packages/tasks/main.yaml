@@ -1,12 +1,12 @@
 - name: update package databases
   become: yes
   pacman:
-          update_cache: yes
+    update_cache: yes
 
 - name: install required packages for sngsk.info
   pacman:
-          state: latest
-          name:
-                  - certbot
-                  - certbot-nginx
-                  - nginx
+    state: latest
+    name:
+      - certbot
+      - certbot-nginx
+      - nginx

@@ -1,17 +1,17 @@
 - name: install iptables rules
   copy:
-          src: iptables.rules
-          dest: /etc/iptables/iptables.rules
-          mode: 0644
-          owner: root
-          group: root
+    src: iptables.rules
+    dest: /etc/iptables/iptables.rules
+    mode: 0644
+    owner: root
+    group: root
   notify: restart iptables.service
 
 - name: install ip6tables rules
   copy:
-          src: ip6tables.rules
-          dest: /etc/iptables/ip6tables.rules
-          mode: 0644
-          owner: root
-          group: root
+    src: ip6tables.rules
+    dest: /etc/iptables/ip6tables.rules
+    mode: 0644
+    owner: root
+    group: root
   notify: restart ip6tables.service

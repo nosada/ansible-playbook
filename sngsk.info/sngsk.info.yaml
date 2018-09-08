@@ -2,14 +2,14 @@
   hosts: sngsk.info
   become: yes
   roles:
-          - install_packages
-          - install_configs
-          - install_sngsk.info_configs
-          - activate_services
+    - install_packages
+    - install_configs
+    - install_sngsk.info_configs
+    - activate_services
 
 - name: configure mackerel-agent
   hosts: sngsk.info
   become: yes
   roles:
-          - install_mackerel_conf_for_application
-          - install_mackerel_conf_for_nspawn_container
+    - install_mackerel_conf_for_application
+    - install_mackerel_conf_for_nspawn_container

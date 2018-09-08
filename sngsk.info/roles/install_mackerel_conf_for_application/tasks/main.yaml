@@ -9,11 +9,11 @@
 - name: install mackerel-agent config for applications
   become: yes
   template:
-          src: for_application.conf.j2
-          dest: "/etc/mackerel-agent/conf.d/{{ item }}.conf"
-          mode: 0644
-          owner: root
-          group: root
+    src: for_application.conf.j2
+    dest: "/etc/mackerel-agent/conf.d/{{ item }}.conf"
+    mode: 0644
+    owner: root
+    group: root
   with_items:
-          - "{{ domains }}"
+    - "{{ domains }}"
   notify: activate mackerel-agent

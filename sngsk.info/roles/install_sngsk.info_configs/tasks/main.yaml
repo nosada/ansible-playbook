@@ -1,52 +1,52 @@
 - name: clone sngsk.info repository
   git:
-          repo: https://github.com/nosada/sngsk.info.git
-          dest: /opt/sngsk.info
+    repo: https://github.com/nosada/sngsk.info.git
+    dest: /opt/sngsk.info
 
 - name: copy nginx.conf to /etc/nginx
   copy:
-          remote_src: yes
-          src: /opt/sngsk.info/nginx/host/nginx.conf
-          dest: /etc/nginx/nginx.conf
-          mode: 0644
-          owner: root
-          group: root
+    remote_src: yes
+    src: /opt/sngsk.info/nginx/host/nginx.conf
+    dest: /etc/nginx/nginx.conf
+    mode: 0644
+    owner: root
+    group: root
 
 - name: create /etc/nginx/conf.d
   file:
-          path: /etc/nginx/conf.d
-          state: directory
-          mode: 0755
-          owner: root
-          group: root
+    path: /etc/nginx/conf.d
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
 
 - name: copy nginx partial configs to /etc/nginx/conf.d/
   copy:
-          remote_src: yes
-          src: "/opt/sngsk.info/nginx/host/conf.d/{{ item }}"
-          dest: "/etc/nginx/conf.d/{{ item }}"
-          mode: 0644
-          owner: root
-          group: root
+    remote_src: yes
+    src: "/opt/sngsk.info/nginx/host/conf.d/{{ item }}"
+    dest: "/etc/nginx/conf.d/{{ item }}"
+    mode: 0644
+    owner: root
+    group: root
   with_items:
-          - redirect.conf
-          - sngsk.conf
+    - redirect.conf
+    - sngsk.conf
   notify: activate nginx.service
 
 - name: install certbot.service
   copy:
-          src: certbot.service
-          dest: /etc/systemd/system/certbot.service
-          mode: 0644
-          owner: root
-          group: root
+    src: certbot.service
+    dest: /etc/systemd/system/certbot.service
+    mode: 0644
+    owner: root
+    group: root
   notify: activate certbot.service
 
 - name: install certbot.timer
   copy:
-          src: certbot.timer
-          dest: /etc/systemd/system/certbot.timer
-          mode: 0644
-          owner: root
-          group: root
-  notify: activate certbot.timer
+    src: certbot.timer
+    dest: /etc/systemd/system/certbot.timer
+    mode: 0644
+    owner: root
+    group: root
+    notify: activate certbot.timer
