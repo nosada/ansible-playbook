@@ -1,0 +1,13 @@
+- name: clone sngsk.info repository
+  git:
+    repo: https://github.com/nosada/sngsk.info.git
+    dest: /opt/sngsk.info
+
+- name: stop running container with docker-compose
+  command: "docker-compose -f /opt/sngsk.info/docker-compose.yaml stop"
+
+- name: build container image with docker-compose
+  command: "docker-compose -f /opt/sngsk.info/docker-compose.yaml build --pull --force-rm"
+
+- name: start container with docker-compose
+  command: "docker-compose -f /opt/sngsk.info/docker-compose.yaml up -d"
