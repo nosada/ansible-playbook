@@ -49,4 +49,4 @@
     mode: 0644
     owner: root
     group: root
-    notify: activate certbot.timer
+  notify: activate certbot.timer
