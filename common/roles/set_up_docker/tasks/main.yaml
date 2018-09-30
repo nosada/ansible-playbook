@@ -1,7 +1,7 @@
 - name: add user to group docker
   user:
     name: "{{ ansible_user }}"
-    groups: docker
+    groups: "docker,wheel,{{ ansible_user }}"
 
 - name: create /etc/docker
   file:
