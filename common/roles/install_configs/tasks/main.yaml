@@ -14,6 +14,14 @@
     owner: root
     group: root
 
+- name: create /var/tmp/makepkg
+  file:
+    path: /var/tmp/makepkg
+    state: directory
+    mode: 0755
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+
 - name: install mirrorupgrade.hook to /etc/pacman.d/hooks
   copy:
     src: mirrorupgrade.hook
@@ -114,21 +122,3 @@
     mode: 0644
     owner: root
     group: root
-
-- name: create /etc/docker
-  file:
-    path: /etc/docker
-    state: directory
-    mode: 0755
-    owner: root
-    group: root
-
-- name: install daemon.json to /etc/docker/
-  copy:
-    src: daemon.json
-    dest: /etc/docker/daemon.json
-    mode: 0644
-    owner: root
-    group: root
-  notify:
-    restart docker.service
