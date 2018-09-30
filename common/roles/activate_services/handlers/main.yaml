@@ -1,0 +1,13 @@
+- name: activate prune-docker-contents.service
+  systemd:
+    daemon-reload: yes
+    enabled: yes
+    name: prune-docker-contents.service
+    state: restarted
+
+- name: activate prune-docker-contents.timer
+  systemd:
+    daemon-reload: yes
+    enabled: yes
+    name: prune-docker-contents.timer
+    state: restarted

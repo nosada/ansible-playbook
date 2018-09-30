@@ -1,0 +1,19 @@
+- name: install prune-docker-contents.service
+  become: yes
+  copy:
+    src: prune-docker-contents.service
+    dest: /etc/systemd/system/prune-docker-contents.service
+    mode: 0644
+    owner: root
+    group: root
+  notify: activate prune-docker-contents.service
+
+- name: install prune-docker-contents.timer
+  become: yes
+  copy:
+    src: prune-docker-contents.timer
+    dest: /etc/systemd/system/prune-docker-contents.timer
+    mode: 0644
+    owner: root
+    group: root
+  notify: activate prune-docker-contents.timer

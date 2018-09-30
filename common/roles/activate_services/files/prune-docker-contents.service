@@ -1,0 +1,6 @@
+[Unit]
+Description=Prune unneeded docker contents (images, networks, etc)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/docker system prune -f
