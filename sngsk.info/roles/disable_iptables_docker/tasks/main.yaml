@@ -1,0 +1,22 @@
+- name: add user to group docker
+  user:
+    name: "{{ ansible_user }}"
+    groups: "docker,wheel,{{ ansible_user }}"
+
+- name: create /etc/docker
+  file:
+    path: /etc/docker
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+
+- name: install daemon.json to /etc/docker/
+  copy:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    restart docker.service

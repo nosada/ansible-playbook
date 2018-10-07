@@ -17,4 +17,6 @@
 - name: set up docker container for sngsk.info with docker-compose
   hosts: sngsk.info
   roles:
+    - enable_iptables_docker
     - use_docker_in_sngsk.info
+    - disable_iptables_docker
