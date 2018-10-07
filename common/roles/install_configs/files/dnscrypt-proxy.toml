@@ -1,4 +1,4 @@
-server_names = ['cloudflare-ipv6', 'cloudflare']
+server_names = ['cloudflare']
 listen_addresses = ['127.0.0.1:53000', '[::1]:53000']
 max_clients = 5
 ipv4_servers = true
