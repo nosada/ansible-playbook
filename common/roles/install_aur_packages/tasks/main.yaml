@@ -44,6 +44,15 @@
 - name: install urlview
   include_tasks: library/aur/pkg.yml pkg_name=urlview
 
+- name: install packages whom tmux-mem-cpu-load-git depends
+  pacman:
+    state: latest
+    name:
+      - jsoncpp
+      - rhash
+      - shared-mime-info
+      - cmake
+
 - name: install tmux-mem-cpu-load-git
   include_tasks: library/aur/pkg.yml pkg_name=tmux-mem-cpu-load-git
 
