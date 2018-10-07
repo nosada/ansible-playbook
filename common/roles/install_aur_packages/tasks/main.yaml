@@ -44,6 +44,9 @@
 - name: install urlview
   include_tasks: library/aur/pkg.yml pkg_name=urlview
 
+- name: install tmux-mem-cpu-load-git
+  include_tasks: library/aur/pkg.yml pkg_name=tmux-mem-cpu-load-git
+
 - name: install mackerel-agent
   include_tasks: library/aur/pkg.yml pkg_name=mackerel-agent
   when: mackerel_api_key is defined
