@@ -45,6 +45,7 @@
   include_tasks: library/aur/pkg.yml pkg_name=urlview
 
 - name: install packages whom tmux-mem-cpu-load-git depends
+  become: yes
   pacman:
     state: latest
     name:
