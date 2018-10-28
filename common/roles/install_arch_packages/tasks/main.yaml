@@ -21,12 +21,13 @@
       - fortune-mod
       - fish
       - fzf
-      - geoip
-      - geoip-database
+      - geoip2-database
       - git
       - go
       - htop
       - jq
+      - libmaxminddb
+      - mmdblookup
       - neovim
       - optipng
       - pacman-contrib
@@ -51,10 +52,3 @@
 - name: clean package cache for 'pacman -U'
   become: yes
   shell: "pacman --noconfirm -Scc"
-
-#- name: downgrade systemd and libsystemd
-#  become: yes
-#  shell: "pacman --noconfirm -U {{ item }}"
-#  with_items:
-#          - https://archive.archlinux.org/packages/s/systemd/systemd-238.133-4-x86_64.pkg.tar.xz
-#          - https://archive.archlinux.org/packages/l/libsystemd/libsystemd-238.133-4-x86_64.pkg.tar.xz
