@@ -23,26 +23,18 @@
     group: root
     state: link
 
-- name: install neovim-symlinks
-  include_tasks: library/aur/pkg.yml pkg_name=neovim-symlinks
-
-- name: install neofetch-git
-  include_tasks: library/aur/pkg.yml pkg_name=neofetch-git
-
-- name: install cdu
-  include_tasks: library/aur/pkg.yml pkg_name=cdu
-
-- name: install mkosi
-  include_tasks: library/aur/pkg.yml pkg_name=mkosi
-
-- name: install python-lolcat
-  include_tasks: library/aur/pkg.yml pkg_name=python-lolcat
-
-- name: install ghq
-  include_tasks: library/aur/pkg.yml pkg_name=ghq
-
-- name: install urlview
-  include_tasks: library/aur/pkg.yml pkg_name=urlview
+- name: install packages hosted in AUR
+  include_tasks:
+    file: library/aur/pkg.yml
+    apply:
+      pkg_name:
+        - neovim-symlinks
+        - neofetch-git
+        - cdu
+        - mkosi
+        - python-lolcat
+        - ghq
+        - urlview
 
 - name: install packages whom tmux-mem-cpu-load-git depends
   become: yes
@@ -55,20 +47,19 @@
       - cmake
 
 - name: install tmux-mem-cpu-load-git
-  include_tasks: library/aur/pkg.yml pkg_name=tmux-mem-cpu-load-git
+  include_tasks:
+    file: library/aur/pkg.yml
+    apply:
+      pkg_name:
+        - tmux-mem-cpu-load-git
 
-- name: install mackerel-agent
-  include_tasks: library/aur/pkg.yml pkg_name=mackerel-agent
-  when: mackerel_api_key is defined
-
-- name: install mackerel-agent-plugins-git
-  include_tasks: library/aur/pkg.yml pkg_name=mackerel-agent-plugins-git
-  when: mackerel_api_key is defined
-
-- name: install mackerel-check-plugins-git
-  include_tasks: library/aur/pkg.yml pkg_name=mackerel-check-plugins-git
-  when: mackerel_api_key is defined
-
-- name: install mkr
-  include_tasks: library/aur/pkg.yml pkg_name=mkr
+- name: install Mackerel relate packages
+  include_tasks:
+    file: library/aur/pkg.yml
+    apply:
+      pkg_name:
+        - mackerel-agent
+        - mackerel-agent-plugins-git
+        - mackerel-check-plugins-git
+        - mkr
   when: mackerel_api_key is defined
