@@ -1,7 +1,7 @@
 - name: check ${HOME}/.cache is symlinked
   stat:
     path: "/home/{{ ansible_user }}/.cache"
-    register: cache_path
+  register: cache_path
 
 - name: delete current ${HOME}/.cache
   file:
