@@ -1,13 +1,20 @@
+- name: check ${HOME}/.cache is symlinked
+  stat:
+    path: "/home/{{ ansible_user }}/.cache"
+    register: cache_path
+
 - name: delete current ${HOME}/.cache
   file:
     path: "/home/{{ ansible_user }}/.cache"
     state: absent
     force: yes
+  when: (cache_path.stat.islink is defined) and (not links.stat.islink)
 
 - name: create /ramdisk/cache
   file:
     path: "/ramdisk/cache/"
     state: directory
+  when: (cache_path.stat.islink is defined) and (not links.stat.islink)
 
 - name: create symlink ${HOME}/.cache to /ramdisk/cache
   file:
@@ -15,3 +22,4 @@
     dest: "/home/{{ ansible_user }}/.cache"
     state: link
     force: yes
+  when: (cache_path.stat.islink is defined) and (not links.stat.islink)
