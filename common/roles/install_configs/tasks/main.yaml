@@ -89,7 +89,7 @@
     path: /etc/resolv.conf
     state: absent
   when:
-    resolv_conf_status.stat.exists
+    resolv_conf_status.stat.exists and resolv_conf_status.stat.islink
 
 - name: install /etc/resolv.conf
   copy:
