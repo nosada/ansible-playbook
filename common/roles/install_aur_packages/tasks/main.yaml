@@ -27,14 +27,14 @@
   include_tasks:
     file: library/aur/pkg.yml
     apply:
-      pkg_name:
-        - neovim-symlinks
-        - neofetch-git
-        - cdu
-        - mkosi
-        - python-lolcat
-        - ghq
-        - urlview
+      vars:
+        pkg_name: neovim-symlinks
+        pkg_name: neofetch-git
+        pkg_name: cdu
+        pkg_name: mkosi
+        pkg_name: python-lolcat
+        pkg_name: ghq
+        pkg_name: urlview
 
 - name: install packages whom tmux-mem-cpu-load-git depends
   become: yes
@@ -50,16 +50,16 @@
   include_tasks:
     file: library/aur/pkg.yml
     apply:
-      pkg_name:
-        - tmux-mem-cpu-load-git
+      vars:
+        pkg_name: tmux-mem-cpu-load-git
 
 - name: install Mackerel relate packages
   include_tasks:
     file: library/aur/pkg.yml
     apply:
-      pkg_name:
-        - mackerel-agent
-        - mackerel-agent-plugins-git
-        - mackerel-check-plugins-git
-        - mkr
+      vars:
+        pkg_name: mackerel-agent
+        pkg_name: mackerel-agent-plugins-git
+        pkg_name: mackerel-check-plugins-git
+        pkg_name: mkr
   when: mackerel_api_key is defined
