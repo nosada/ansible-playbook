@@ -8,13 +8,13 @@
     path: "/home/{{ ansible_user }}/.cache"
     state: absent
     force: yes
-  when: (cache_path.stat.islink is defined) and (not links.stat.islink)
+  when: (cache_path.stat.islink is defined) and (not cache_path.stat.islink)
 
 - name: create /ramdisk/cache
   file:
     path: "/ramdisk/cache/"
     state: directory
-  when: (cache_path.stat.islink is defined) and (not links.stat.islink)
+  when: (cache_path.stat.islink is defined) and (not cache_path.stat.islink)
 
 - name: create symlink ${HOME}/.cache to /ramdisk/cache
   file:
@@ -22,4 +22,4 @@
     dest: "/home/{{ ansible_user }}/.cache"
     state: link
     force: yes
-  when: (cache_path.stat.islink is defined) and (not links.stat.islink)
+  when: (cache_path.stat.islink is defined) and (not cache_path.stat.islink)
