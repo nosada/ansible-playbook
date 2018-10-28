@@ -28,13 +28,14 @@
     file: library/aur/pkg.yml
     apply:
       vars:
-        pkg_name: neovim-symlinks
-        pkg_name: neofetch-git
-        pkg_name: cdu
-        pkg_name: mkosi
-        pkg_name: python-lolcat
-        pkg_name: ghq
-        pkg_name: urlview
+        pkg_name:
+          - neovim-symlinks
+          - neofetch-git
+          - cdu
+          - mkosi
+          - python-lolcat
+          - ghq
+          - urlview
 
 - name: install packages whom tmux-mem-cpu-load-git depends
   become: yes
@@ -58,8 +59,9 @@
     file: library/aur/pkg.yml
     apply:
       vars:
-        pkg_name: mackerel-agent
-        pkg_name: mackerel-agent-plugins-git
-        pkg_name: mackerel-check-plugins-git
-        pkg_name: mkr
+        pkg_name:
+          - mackerel-agent
+          - mackerel-agent-plugins-git
+          - mackerel-check-plugins-git
+          - mkr
   when: mackerel_api_key is defined
