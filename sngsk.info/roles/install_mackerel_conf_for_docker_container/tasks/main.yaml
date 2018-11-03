@@ -1,5 +1,5 @@
 - name: install check_docker_container to /usr/local/bin/
-  become: yes
+  copy: yes
   file:
     src: check_docker_container
     dest: /usr/local/bin/check_docker_container
@@ -29,7 +29,7 @@
 
 - name: install docker_metric.conf to /etc/mackerel-agent/conf.d
   become: yes
-  file:
+  copy:
     src: docker_metric.conf
     dest: /etc/mackerel-agent/conf.d/docker_metric.conf
     mode: 0644
