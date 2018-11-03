@@ -13,6 +13,7 @@
   roles:
     - install_mackerel_conf_for_application
     - install_mackerel_conf_for_nspawn_container
+    - install_mackerel_conf_for_docker_container
 
 - name: set up docker container for sngsk.info with docker-compose
   hosts: sngsk.info

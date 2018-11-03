@@ -1,0 +1,5 @@
+[plugin.checks.check_{{ item }}]
+command = "/usr/local/bin/check_docker_container {{ item }}"
+max_check_attempts = 3
+check_interval = 1
+timeout_seconds = 10
