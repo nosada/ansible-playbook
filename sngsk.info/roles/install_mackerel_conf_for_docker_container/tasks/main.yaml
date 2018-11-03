@@ -1,6 +1,6 @@
 - name: install check_docker_container to /usr/local/bin/
-  copy: yes
-  file:
+  become: yes
+  copy:
     src: check_docker_container
     dest: /usr/local/bin/check_docker_container
     mode: 0755
