@@ -52,3 +52,11 @@
 - name: clean package cache for 'pacman -U'
   become: yes
   shell: "pacman --noconfirm -Scc"
+
+- name: reinnstall systemd and libsystemd to specified version
+  become: yes
+  shell: "pacman --noconfirm -U {{ item }}"
+  with_items:
+    - "https://archive.archlinux.org/packages/s/systemd/systemd-{{ systemd_version }}-x86_64.pkg.tar.xz"
+    - "https://archive.archlinux.org/packages/l/libsystemd/libsystemd-{{ systemd_version }}-x86_64.pkg.tar.xz"
+  when: systemd_version is defined and systemd_version != ""
