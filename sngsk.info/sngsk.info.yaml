@@ -15,9 +15,9 @@
     - install_mackerel_conf_for_nspawn_container
     - install_mackerel_conf_for_docker_container
 
-- name: set up docker container for sngsk.info with docker-compose
-  hosts: common
-  roles:
-    - enable_iptables_docker
-    - use_docker_in_sngsk.info
-    - disable_iptables_docker
+# - name: set up docker container for sngsk.info with docker-compose
+#   hosts: common
+#   roles:
+#     - enable_iptables_docker
+#     - use_docker_in_sngsk.info
+#     - disable_iptables_docker
