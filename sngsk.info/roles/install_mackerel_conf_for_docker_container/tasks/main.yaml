@@ -26,6 +26,7 @@
   with_items:
     - "{{ docker_containers }}"
   notify: activate mackerel-agent
+  when: docker_containers is defined
 
 - name: install docker_metric.conf to /etc/mackerel-agent/conf.d
   become: yes
