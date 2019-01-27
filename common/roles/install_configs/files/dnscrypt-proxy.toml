@@ -1,9 +1,8 @@
-server_names = ['cloudflare']
 listen_addresses = ['127.0.0.1:53000', '[::1]:53000']
-max_clients = 5
+max_clients = 3
 ipv4_servers = true
 ipv6_servers = true
-dnscrypt_servers = false
+dnscrypt_servers = true
 doh_servers = true
 require_dnssec = false
 require_nolog = true

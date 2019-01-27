@@ -29,7 +29,6 @@
       - libmaxminddb
       - mmdblookup
       - neovim
-      - optipng
       - pacman-contrib
       - pacmatic
       - polkit
@@ -39,7 +38,6 @@
       - reflector
       - rsync
       - unbound
-      - upx
       - tmux
       - tree
 
