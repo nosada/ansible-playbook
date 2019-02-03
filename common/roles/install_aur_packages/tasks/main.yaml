@@ -23,6 +23,21 @@
     group: root
     state: link
 
+- name: clean build directory
+  become: yes
+  file:
+    path: "{{ build_directory }}/{{ item }}"
+    state: absent
+  with_items:
+    - neovim-symlinks
+    - neofetch-git
+    - cdu
+    - mkosi
+    - python-lolcat
+    - ghq
+    - urlview
+    - tmux-mem-cpu-load-git
+
 - name: install packages hosted in AUR
   include_tasks:
     file: library/aur/pkg.yml
@@ -38,7 +53,7 @@
     - ghq
     - urlview
 
-- name: install packages whom tmux-mem-cpu-load-git depends
+- name: install packages whom tmux-mem-cpu-load-git depends on
   become: yes
   pacman:
     state: latest
@@ -54,6 +69,18 @@
     apply:
       vars:
         pkg_name: tmux-mem-cpu-load-git
+
+- name: clean build directory for mackerel relate packages
+  become: yes
+  file:
+    path: "{{ build_directory }}/{{ item }}"
+    state: absent
+  with_items:
+    - mackerel-agent
+    - mackerel-agent-plugins-git
+    - mackerel-check-plugins-git
+    - mkr
+  when: mackerel_api_key is defined
 
 - name: install Mackerel relate packages
   include_tasks:
