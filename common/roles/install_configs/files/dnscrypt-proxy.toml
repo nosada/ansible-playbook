@@ -1,5 +1,6 @@
+server_names = ['cloudflare', 'cloudflare-ipv6', 'dnscrypt.ca-1', 'dnscrypt.ca-1-ipv6']
 listen_addresses = ['127.0.0.1:53000', '[::1]:53000']
-max_clients = 3
+max_clients = 10
 ipv4_servers = true
 ipv6_servers = true
 dnscrypt_servers = true
@@ -12,6 +13,7 @@ timeout = 2500
 keepalive = 30
 use_syslog = true
 cert_refresh_delay = 240
+fallback_resolver = '9.9.9.9:53'
 ignore_system_dns = true
 netprobe_timeout = 30
 log_files_max_size = 10
