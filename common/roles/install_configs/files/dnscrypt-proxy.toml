@@ -1,4 +1,4 @@
-server_names = ['cloudflare', 'cloudflare-ipv6', 'dnscrypt.ca-1', 'dnscrypt.ca-1-ipv6']
+server_names = ['cloudflare', 'cloudflare-ipv6', 'dnscrypt-jp-blahdns-ipv4', 'dnscrypt-jp-blahdns-ipv6']
 listen_addresses = ['127.0.0.1:53000', '[::1]:53000']
 max_clients = 10
 ipv4_servers = true
