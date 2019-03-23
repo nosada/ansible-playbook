@@ -32,7 +32,7 @@
     - neovim-symlinks
     - neofetch-git
     - cdu
-    - mkosi
+    - mkosi-git
     - python-lolcat
     - ghq
     - urlview
@@ -48,7 +48,7 @@
     - neovim-symlinks
     - neofetch-git
     - cdu
-    - mkosi
+    - mkosi-git
     - python-lolcat
     - ghq
     - urlview
