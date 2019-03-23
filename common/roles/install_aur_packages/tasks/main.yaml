@@ -1,3 +1,20 @@
+- name: install packages whom tmux-mem-cpu-load-git depends on
+  become: yes
+  pacman:
+    state: latest
+    name:
+      - jsoncpp
+      - rhash
+      - shared-mime-info
+      - cmake
+
+- name: install pandoc, that is required as makedepends by mkosi-git
+  become: yes
+  pacman:
+    state: latest
+    name:
+      - pandoc
+
 - name: check whether neovim-symlinks already installed
   shell: "pacman -Qs neovim-symlinks"
   register: neovim_symlinks_installed
@@ -52,23 +69,7 @@
     - python-lolcat
     - ghq
     - urlview
-
-- name: install packages whom tmux-mem-cpu-load-git depends on
-  become: yes
-  pacman:
-    state: latest
-    name:
-      - jsoncpp
-      - rhash
-      - shared-mime-info
-      - cmake
-
-- name: install tmux-mem-cpu-load-git
-  include_tasks:
-    file: library/aur/pkg.yml
-    apply:
-      vars:
-        pkg_name: tmux-mem-cpu-load-git
+    - tmux-mem-cpu-load-git
 
 - name: clean build directory for mackerel relate packages
   become: yes
