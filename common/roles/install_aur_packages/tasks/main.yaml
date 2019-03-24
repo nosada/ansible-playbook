@@ -69,6 +69,21 @@
     - urlview
     - tmux-mem-cpu-load-git
 
+- name: clean PKGBUILD directory under /tmp/
+  become: yes
+  file:
+    path: "/tmp/{{ item }}"
+    state: absent
+  with_items:
+    - neovim-symlinks
+    - neofetch-git
+    - cdu
+    - mkosi-git
+    - python-lolcat
+    - ghq
+    - urlview
+    - tmux-mem-cpu-load-git
+
 - name: install packages hosted in AUR
   include_tasks:
     file: library/aur/pkg.yml
