@@ -68,6 +68,7 @@
     - ghq
     - urlview
     - tmux-mem-cpu-load-git
+    - fpp
 
 - name: clean PKGBUILD directory under /tmp/
   become: yes
@@ -83,6 +84,7 @@
     - ghq
     - urlview
     - tmux-mem-cpu-load-git
+    - fpp
 
 - name: install packages hosted in AUR
   include_tasks:
@@ -99,6 +101,7 @@
     - ghq
     - urlview
     - tmux-mem-cpu-load-git
+    - fpp
 
 - name: clean build directory for mackerel relate packages
   become: yes
