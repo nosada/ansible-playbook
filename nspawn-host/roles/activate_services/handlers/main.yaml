@@ -11,3 +11,17 @@
     enabled: yes
     name: wake-up-container.timer
     state: restarted
+
+- name: activate update-container.service
+  systemd:
+    daemon-reload: yes
+    enabled: yes
+    name: update-container.service
+    state: restarted
+
+- name: activate update-container.timer
+  systemd:
+    daemon-reload: yes
+    enabled: yes
+    name: update-container.timer
+    state: restarted

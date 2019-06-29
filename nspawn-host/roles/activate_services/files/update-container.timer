@@ -1,5 +1,5 @@
 [Unit]
-Description=update arch linux nspawn container (daily)
+Description=Updating Arch Linux nspawn containers
 
 [Timer]
 OnCalendar=daily

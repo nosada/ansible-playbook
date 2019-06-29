@@ -1,5 +1,5 @@
 [Unit]
-Description=update arch linux nspawn container
+Description=Updating Arch Linux nspawn containers
 
 [Service]
 Type=oneshot

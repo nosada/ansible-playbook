@@ -1,5 +1,5 @@
 [Unit]
-Description=wake up nginx
+Description=Making nginx waked up
 
 [Service]
 Type=oneshot

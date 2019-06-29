@@ -22,7 +22,7 @@
   become: yes
   copy:
     src: restart-dns-relate-services
-    dest: /use/local/bin/restart-dns-relate-service
+    dest: /usr/local/bin/restart-dns-relate-services
     mode: 0755
     owner: root
     group: root
@@ -35,7 +35,7 @@
     mode: 0644
     owner: root
     group: root
-    notify: activate restart-dns-relate-services.service
+  notify: activate restart-dns-relate-services.service
 
 - name: install restart-dns-relate-services.timer
   become: yes
@@ -45,4 +45,4 @@
     mode: 0644
     owner: root
     group: root
-    notify: activate restart-dns-relate-services.timer
+  notify: activate restart-dns-relate-services.timer

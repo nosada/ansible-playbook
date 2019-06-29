@@ -1,5 +1,5 @@
 [Unit]
-Description=wake up nginx (per 2mins)
+Description=Making nginx waked up
 
 [Timer]
 OnBootSec=1min
