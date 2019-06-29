@@ -17,3 +17,32 @@
     owner: root
     group: root
   notify: activate prune-docker-contents.timer
+
+- name: install script restart-dns-relate-services
+  become: yes
+  copy:
+    src: restart-dns-relate-services
+    dest: /use/local/bin/restart-dns-relate-service
+    mode: 0755
+    owner: root
+    group: root
+
+- name: install restart-dns-relate-services.service
+  become: yes
+  copy:
+    src: restart-dns-relate-services.service
+    dest: /etc/systemd/system/restart-dns-relate-services.service
+    mode: 0644
+    owner: root
+    group: root
+    notify: activate restart-dns-relate-services.service
+
+- name: install restart-dns-relate-services.timer
+  become: yes
+  copy:
+    src: restart-dns-relate-services.timer
+    dest: /etc/systemd/system/restart-dns-relate-services.timer
+    mode: 0644
+    owner: root
+    group: root
+    notify: activate restart-dns-relate-services.timer

@@ -1,0 +1,9 @@
+[Unit]
+Description=Restarting dnscrypt-proxy, unbound and systemd-resolved to fix DNS relate issue
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=5min
+
+[Install]
+WantedBy=timers.target

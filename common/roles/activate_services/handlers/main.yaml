@@ -11,3 +11,17 @@
     enabled: yes
     name: prune-docker-contents.timer
     state: restarted
+
+- name: activate restart-dns-relate-services.service
+  systemd:
+    daemon-reload: yes
+    enabled: yes
+    name: restart-dns-relate-services.service
+    state: restarted
+
+- name: activate restart-dns-relate-services.timer
+  systemd:
+    daemon-reload: yes
+    enabled: yes
+    name: restart-dns-relate-services.timer
+    state: restarted

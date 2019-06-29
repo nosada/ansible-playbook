@@ -1,0 +1,17 @@
+#!/bin/bash
+
+TEST_DOMAIN="example.org"
+
+RESOLVED=$(drill $TEST_DOMAIN | grep 'ANSWER SECTION' -A 1 | grep 'IN' | awk '{print $5}')
+if [[ -z "$RESOLVED" ]]; then
+	echo "Oops, it seems DNS relate system is corrupted in this host. Fixing it."
+	systemctl stop dnscrypt-proxy
+	systemctl stop unbound
+	systemctl stop systemd-resolved
+
+	systemctl start dnscrypt-proxy
+	sleep 15
+	systemctl start unbound
+	sleep 5
+	systemctl start systemd-resolved
+fi
