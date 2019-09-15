@@ -29,7 +29,6 @@
     owner: root
     group: root
   with_items:
-    - redirect.conf
     - sngsk.conf
     - mastodon.conf
   notify: activate nginx.service
