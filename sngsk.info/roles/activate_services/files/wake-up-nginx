@@ -1,16 +1,51 @@
 #!/bin/bash
 
-while read -r ALERT; do
-	echo $ALERT
-	if [[ $(echo $ALERT | egrep 'HTTP.1.1 502|connection refused') ]]; then
-		echo "Mackrel alerts what seems to be caused by around Nginx."
-		echo "Restart Nginx."
+function restart-nginx() {
+	if systemctl -q is-active nginx; then
 		systemctl restart nginx
+	else
+		systemctl start nginx
 	fi
-done < <(mkr alerts | jq -r '.[] | .status + "," + .message')
+}
 
-NGINX_STATUS=$(systemctl status nginx | grep Active | grep running)
-if [ "${NGINX_STATUS}" = "" ]; then
-	echo "Nginx isn't running. Start Nginx."
-	systemctl start nginx
-fi
+function fetch-http-header() {
+	TIMEOUT=10
+	timeout $TIMEOUT curl -sSL -D - -o /dev/null "$1"
+}
+
+function extract-nginx-conf-content() {
+	awk '{print $3}' | sed -e 's/;//g' | sort | uniq
+}
+
+NGINX_CONF_DIR="/etc/nginx/conf.d"
+
+while read -r SERVER_NAME; do
+	CHECK_PROXY_PASS=false
+
+	STATUS_CODE=$(fetch-http-header "https://$SERVER_NAME" | grep HTTP)
+	if [[ -z "$STATUS_CODE" ]]; then
+		echo "$SERVER_NAME seems to be down... Restarting nginx"
+		CHECK_PROXY_PASS=true
+	else
+		ERROR="$(echo "$STATUS_CODE" | grep 50)"
+		if [[ -n "$ERROR" ]]; then
+			CHECK_PROXY_PASS=true
+		fi
+	fi
+
+	if $CHECK_PROXY_PASS; then
+		while read -r PROXY_PASS; do
+			STATUS_CODE=$(fetch-http-header "$PROXY_PASS" | grep HTTP)
+			if [[ -z "$STATUS_CODE" ]]; then
+				echo "Target $PROXY_PASS in Nginx config not responds now. Stop restarting Nginx because it'll make nginx killed"
+				RESTART_NGINX=false
+			else
+				RESTART_NGINX=true
+			fi
+		done < <(grep "proxy_pass " "$NGINX_CONF_DIR"/* | extract-nginx-conf-content)
+	fi
+
+	if $RESTART_NGINX; then
+		restart-nginx
+	fi
+done < <(grep server_name "$NGINX_CONF_DIR"/* | extract-nginx-conf-content)
