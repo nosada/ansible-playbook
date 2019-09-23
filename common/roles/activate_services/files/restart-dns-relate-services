@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TEST_DOMAIN="example.org"
+TEST_DOMAIN="google.com"
 
 RESOLVED=$(drill $TEST_DOMAIN | grep 'ANSWER SECTION' -A 1 | grep 'IN' | awk '{print $5}')
 if [[ -z "$RESOLVED" ]]; then
