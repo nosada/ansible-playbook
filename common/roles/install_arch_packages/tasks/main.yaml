@@ -27,7 +27,7 @@
       - fortune-mod
       - fish
       - fzf
-      - geoip2-database
+      - geoipupdate
       - git
       - go
       - htop
