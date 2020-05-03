@@ -1,20 +1,3 @@
-- name: install packages whom tmux-mem-cpu-load-git depends on
-  become: yes
-  pacman:
-    state: latest
-    name:
-      - jsoncpp
-      - rhash
-      - shared-mime-info
-      - cmake
-
-- name: install pandoc, that is required as makedepends by mkosi-git
-  become: yes
-  pacman:
-    state: latest
-    name:
-      - pandoc
-
 - name: check whether neovim-symlinks already installed
   shell: "pacman -Qs neovim-symlinks"
   register: neovim_symlinks_installed
