@@ -28,7 +28,7 @@
       - fish
       - fzf
       - git
-      - go
+      - go-pie
       - htop
       - jq
       - neovim
