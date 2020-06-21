@@ -18,14 +18,14 @@
       - aria2
       - btrfs-progs
       - ccache
-      - cowsay
       - colordiff
+      - cowsay
       - dfc
       - dnscrypt-proxy
       - docker
       - docker-compose
-      - fortune-mod
       - fish
+      - fortune-mod
       - fzf
       - git
       - htop
@@ -36,9 +36,10 @@
       - polkit
       - reflector
       - rsync
-      - unbound
+      - systemd-swap
       - tmux
       - tree
+      - unbound
 
 - name: reinnstall systemd and libsystemd to specified version
   become: yes
