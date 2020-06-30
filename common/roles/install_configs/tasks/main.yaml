@@ -138,11 +138,3 @@
     mode: 0644
     owner: root
     group: root
-
-- name: install swap.conf to /etc/systemd/swap
-  copy:
-    src: swap.conf
-    dest: /etc/systemd/swap.conf
-    mode: 0644
-    owner: root
-    group: root
