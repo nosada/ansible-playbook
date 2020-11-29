@@ -31,6 +31,7 @@
       - htop
       - jq
       - neovim
+      - nodejs
       - pacman-contrib
       - pacmatic
       - polkit
@@ -40,6 +41,7 @@
       - tmux
       - tree
       - unbound
+      - yarn
 
 - name: reinnstall systemd and libsystemd to specified version
   become: yes
