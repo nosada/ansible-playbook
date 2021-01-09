@@ -57,22 +57,6 @@
     - restart dnscrypt-proxy.service
     - disable and stop dnscrypt-proxy.socket
 
-- name: create /etc/systemd/system/unbound.service.d/
-  file:
-    path: /etc/systemd/system/unbound.service.d
-    state: directory
-    mode: 0755
-    owner: root
-    group: root
-
-- name: install override.conf to /etc/systemd/system/unbound.service.d/
-  copy:
-    src: override.conf.unbound
-    dest: /etc/systemd/system/unbound.service.d/override.conf
-    mode: 0644
-    owner: root
-    group: root
-
 - name: install unbound.conf to /etc/unbound/
   copy:
     src: unbound.conf
