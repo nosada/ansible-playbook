@@ -32,3 +32,9 @@
     enabled: yes
     name: systemd-resolved.service
     state: restarted
+
+- name: restart systemd-logind.service
+  systemd:
+    daemon_reload: yes
+    name: systemd-logind.service
+    state: restarted

@@ -122,3 +122,13 @@
     mode: 0644
     owner: root
     group: root
+
+- name: install /etc/systemd/logind.conf
+  copy:
+    src: logind.conf
+    dest: /etc/systemd/logind.conf
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - restart systemd-logind.service
