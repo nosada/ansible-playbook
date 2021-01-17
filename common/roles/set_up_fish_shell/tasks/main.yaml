@@ -10,6 +10,6 @@
     shell: "{{ which_fish.stdout }}"
 
 - name: install fish theme
-  shell: "fisher add {{ fish_theme }}"
+  shell: "fisher install {{ fish_theme }}"
   args:
     executable: "{{ which_fish.stdout }}"
