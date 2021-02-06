@@ -132,3 +132,13 @@
     group: root
   notify:
     - restart systemd-logind.service
+
+- name: install /etc/systemd/swap.conf
+  copy:
+    src: swap.conf
+    dest: /etc/systemd/swap.conf
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - restart systemd-swap.service

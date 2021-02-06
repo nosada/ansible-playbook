@@ -38,3 +38,10 @@
     daemon_reload: yes
     name: systemd-logind.service
     state: restarted
+
+- name: restart systemd-swap.service
+  systemd:
+    daemon_reload: yes
+    enabled: yes
+    name: systemd-swap.service
+    state: restarted
