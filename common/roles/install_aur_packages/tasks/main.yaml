@@ -14,20 +14,6 @@
   when:
     neovim_symlinks_installed.rc != 0
 
-- name: check whether mkosi-git already installed
-  shell: "pacman -Qsq mkosi-git"
-  register: mkosi_git_installed
-  failed_when: false
-
-- name: uninstall mkosi when mkosi-git NOT installed yet
-  become: yes
-  pacman:
-    state: absent
-    name:
-      - mkosi
-  when:
-    mkosi_git_installed.rc != 0
-
 - name: create symlink to /usr/bin/ for pod2man
   become: yes
   file:
@@ -46,7 +32,6 @@
     - neovim-symlinks
     - neofetch-git
     - cdu
-    - mkosi-git
     - python-lolcat
     - ghq
     - urlview
@@ -62,7 +47,6 @@
     - neovim-symlinks
     - neofetch-git
     - cdu
-    - mkosi-git
     - python-lolcat
     - ghq
     - urlview
@@ -79,7 +63,6 @@
     - neovim-symlinks
     - neofetch-git
     - cdu
-    - mkosi-git
     - python-lolcat
     - ghq
     - urlview
