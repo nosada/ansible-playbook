@@ -1,6 +1,6 @@
 - name: install pacman.conf
-  copy:
-    src: pacman.conf
+  template:
+    src: makepkg.conf.j2
     dest: /etc/pacman.conf
     mode: 0644
     owner: root
