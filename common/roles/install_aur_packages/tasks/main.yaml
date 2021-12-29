@@ -32,7 +32,6 @@
     - neovim-symlinks
     - neofetch-git
     - cdu
-    - python-lolcat
     - ghq
     - urlview
     - tmux-mem-cpu-load-git
@@ -47,7 +46,6 @@
     - neovim-symlinks
     - neofetch-git
     - cdu
-    - python-lolcat
     - ghq
     - urlview
     - tmux-mem-cpu-load-git
@@ -63,7 +61,6 @@
     - neovim-symlinks
     - neofetch-git
     - cdu
-    - python-lolcat
     - ghq
     - urlview
     - tmux-mem-cpu-load-git

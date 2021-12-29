@@ -30,6 +30,7 @@
       - git
       - htop
       - jq
+      - lolcat
       - mkosi
       - neovim
       - nodejs
