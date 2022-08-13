@@ -1,5 +1,5 @@
 listen_addresses = ['127.0.0.1:53000', '[::1]:53000']
-max_clients = 100
+max_clients = 10
 ipv4_servers = true
 ipv6_servers = true
 dnscrypt_servers = true
@@ -10,8 +10,10 @@ require_nolog = true
 require_nofilter = true
 disabled_server_names = []
 force_tcp = false
-timeout = 5000
+http3 = false
+timeout = 2500
 keepalive = 30
+log_file = '/var/log/dnscrypt-proxy/dnscrypt-proxy.log'
 use_syslog = true
 cert_refresh_delay = 240
 bootstrap_resolvers = ['9.9.9.9:53']
@@ -34,23 +36,23 @@ cache_neg_max_ttl = 600
 [captive_portals]
 [local_doh]
 [query_log]
-  format = 'tsv'
+format = 'tsv'
 [nx_log]
-  format = 'tsv'
+format = 'tsv'
 [blocked_names]
 [blocked_ips]
 [allowed_names]
 [allowed_ips]
 [schedules]
 [sources]
-  [sources.'public-resolvers']
-    urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md', 'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/public-resolvers.md', 'https://download.dnscrypt.net/resolvers-list/v3/public-resolvers.md']
+  [sources.public-resolvers]
+    urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md', 'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/public-resolvers.md']
     cache_file = '/var/cache/dnscrypt-proxy/public-resolvers.md'
     minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
     refresh_delay = 72
     prefix = ''
-  [sources.'relays']
-    urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/relays.md', 'https://download.dnscrypt.info/resolvers-list/v3/relays.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/relays.md', 'https://download.dnscrypt.net/resolvers-list/v3/relays.md']
+  [sources.relays]
+    urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/relays.md', 'https://download.dnscrypt.info/resolvers-list/v3/relays.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/relays.md']
     cache_file = '/var/cache/dnscrypt-proxy/relays.md'
     minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
     refresh_delay = 72
