@@ -1,7 +1,0 @@
-- name: activate mackerel-agent
-  become: yes
-  systemd:
-    daemon-reload: yes
-    enabled: yes
-    name: mackerel-agent.service
-    state: restarted

@@ -73,7 +73,6 @@
     state: absent
   with_items:
     - mackerel-agent
-    - mackerel-agent-plugins-git
     - mackerel-check-plugins-git
     - mkr
   when: mackerel_api_key is defined
@@ -86,7 +85,6 @@
         pkg_name: "{{ item }}"
   with_items:
     - mackerel-agent
-    - mackerel-agent-plugins-git
     - mackerel-check-plugins-git
     - mkr
   when: mackerel_api_key is defined
