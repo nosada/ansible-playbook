@@ -1,5 +1,5 @@
 [plugin.checks.check_{{ item }}]
-command = "check-procs --pattern {{ item }}"
+command = "mackerel-check procs --pattern {{ item }}"
 max_check_attempts = 3
 check_interval = 1
 timeout_seconds = 10
