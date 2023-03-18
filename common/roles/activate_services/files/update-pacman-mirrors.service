@@ -1,0 +1,6 @@
+[Unit]
+Description=Update pacman mirrors using reflector
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/reflector --age 12 --sort age --protocol https --protocol http --save /etc/pacman.d/mirrorlist

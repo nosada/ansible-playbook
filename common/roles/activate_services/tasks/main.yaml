@@ -46,3 +46,23 @@
     owner: root
     group: root
   notify: activate restart-dns-relate-services.timer
+
+- name: install update-pacman-mirrors.service
+  become: yes
+  copy:
+    src: update-pacman-mirrors.service
+    dest: /etc/systemd/system/update-pacman-mirrors.service
+    mode: 0644
+    owner: root
+    group: root
+  notify: activate update-pacman-mirrors.service
+
+- name: install update-pacman-mirrors.timer
+  become: yes
+  copy:
+    src: update-pacman-mirrors.timer
+    dest: /etc/systemd/system/update-pacman-mirrors.timer
+    mode: 0644
+    owner: root
+    group: root
+  notify: activate update-pacman-mirrors.timer

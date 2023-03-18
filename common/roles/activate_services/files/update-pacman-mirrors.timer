@@ -1,0 +1,10 @@
+[Unit]
+Description=Update pacman mirrors using reflector
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=1day
+Persistent=true
+
+[Install]
+WantedBy=timers.target

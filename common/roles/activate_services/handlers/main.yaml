@@ -25,3 +25,17 @@
     enabled: yes
     name: restart-dns-relate-services.timer
     state: restarted
+
+- name: activate update-pacman-mirrors.service
+  systemd:
+    daemon-reload: yes
+    enabled: yes
+    name: update-pacman-mirrors.service
+    state: restarted
+
+- name: activate update-pacman-mirrors.timer
+  systemd:
+    daemon-reload: yes
+    enabled: yes
+    name: update-pacman-mirrors.timer
+    state: restarted
