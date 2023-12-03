@@ -3,7 +3,6 @@
   become: yes
   roles:
     - install_packages
-    - install_configs
     - install_sngsk.info_configs
     - activate_services
 
