@@ -24,6 +24,7 @@
       - dnscrypt-proxy
       - docker
       - docker-compose
+      - dosfstools
       - fish
       - fortune-mod
       - fzf
@@ -39,6 +40,7 @@
       - reflector
       - rsync
       - systemd-swap
+      - systemd-ukify
       - tmux
       - tree
       - unbound
