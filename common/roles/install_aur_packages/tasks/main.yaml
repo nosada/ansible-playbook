@@ -65,6 +65,7 @@
     - urlview
     - tmux-mem-cpu-load-git
     - fpp
+    - systemd-swap
 
 - name: clean build directory for mackerel relate packages
   become: yes

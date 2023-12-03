@@ -39,7 +39,6 @@
       - polkit
       - reflector
       - rsync
-      - systemd-swap
       - systemd-ukify
       - tmux
       - tree
