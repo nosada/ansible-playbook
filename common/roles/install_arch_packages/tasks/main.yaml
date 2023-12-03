@@ -29,9 +29,11 @@
       - fortune-mod
       - fzf
       - git
+      - gzip
       - htop
       - inetutils
       - jq
+      - less
       - lolcat
       - mkosi
       - neovim
