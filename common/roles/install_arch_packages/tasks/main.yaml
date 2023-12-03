@@ -40,6 +40,7 @@
       - nodejs
       - pacman-contrib
       - polkit
+      - procps-ng
       - reflector
       - rsync
       - systemd-ukify
