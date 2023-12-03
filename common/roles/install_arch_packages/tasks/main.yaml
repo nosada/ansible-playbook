@@ -30,6 +30,7 @@
       - fzf
       - git
       - htop
+      - inetutils
       - jq
       - lolcat
       - mkosi
