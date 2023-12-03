@@ -1,14 +1,14 @@
-- name: remove existing /opt/mkosi-files
+- name: remove existing /var/mkosi-files
   become: yes
   file:
-    name: /opt/mkosi-files
+    name: /var/mkosi-files
     state: absent
 
 - name: clone mkosi-files repository
   become: yes
   git:
     repo: https://github.com/nosada/mkosi-files.git
-    dest: /opt/mkosi-files
+    dest: /var/mkosi-files
     track_submodules: yes
 
 - name: check existence of containers
@@ -54,7 +54,7 @@
 - name: build container
   become: yes
   make:
-    chdir: "/opt/mkosi-files/{{ item }}"
+    chdir: "/var/mkosi-files/{{ item }}"
     target: image
   with_items:
     - "{{ containers }}"
@@ -62,7 +62,7 @@
 - name: install container
   become: yes
   make:
-    chdir: "/opt/mkosi-files/{{ item }}"
+    chdir: "/var/mkosi-files/{{ item }}"
     target: install
   with_items:
     - "{{ containers }}"
@@ -74,7 +74,7 @@
 - name: clean container
   become: yes
   make:
-    chdir: "/opt/mkosi-files/{{ item }}"
+    chdir: "/var/mkosi-files/{{ item }}"
     target: clean
   with_items:
     - "{{ containers }}"
