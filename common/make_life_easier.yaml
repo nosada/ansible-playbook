@@ -10,14 +10,10 @@
     - set_up_hostname
     - install_connection_configs
     - install_arch_packages
+    - install_aur_packages
     - install_configs
     - set_up_docker
     - activate_services
-
-- name: install AUR packages
-  hosts: common
-  roles:
-    - install_aur_packages
 
 - name: set up fish shell
   hosts: common
