@@ -43,6 +43,7 @@
       - procps-ng
       - reflector
       - rsync
+      - systemd-sysvcompat
       - systemd-ukify
       - tmux
       - tree
