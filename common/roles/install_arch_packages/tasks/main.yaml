@@ -36,6 +36,7 @@
       - jq
       - less
       - lolcat
+      - man-db
       - mkosi
       - neovim
       - nodejs
