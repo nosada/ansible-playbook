@@ -32,6 +32,7 @@
       - gzip
       - htop
       - inetutils
+      - iputils
       - jq
       - less
       - lolcat
