@@ -39,9 +39,9 @@
     name: systemd-logind.service
     state: restarted
 
-- name: restart systemd-swap.service
+- name: restart systemd-zram-setup@zram0.service
   systemd:
     daemon_reload: yes
     enabled: yes
-    name: systemd-swap.service
+    name: systemd-zram-setup@zram0.service
     state: restarted

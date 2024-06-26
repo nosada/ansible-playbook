@@ -52,6 +52,7 @@
       - tree
       - unbound
       - yarn
+      - zram-generator
 
 - name: reinnstall systemd and libsystemd to specified version
   become: yes

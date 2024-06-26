@@ -133,12 +133,12 @@
   notify:
     - restart systemd-logind.service
 
-- name: install /etc/systemd/swap.conf
+- name: install /etc/systemd/zram-generator.conf
   copy:
-    src: swap.conf
-    dest: /etc/systemd/swap.conf
+    src: zram-generator.conf
+    dest: /etc/systemd/zram-generator.conf
     mode: 0644
     owner: root
     group: root
   notify:
-    - restart systemd-swap.service
+    - restart systemd-zram-setup@zram0.service

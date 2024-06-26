@@ -69,7 +69,6 @@
     - urlview
     - tmux-mem-cpu-load-git
     - fpp
-    - systemd-swap
     - downgrade
     - yay
 
