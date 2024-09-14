@@ -39,7 +39,6 @@
       - lolcat
       - lsof
       - man-db
-      - mkosi
       - neovim
       - nodejs
       - pacman-contrib
