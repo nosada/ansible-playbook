@@ -39,6 +39,7 @@
       - lolcat
       - lsof
       - man-db
+      - macchina
       - mtools
       - neovim
       - nodejs
