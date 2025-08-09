@@ -16,22 +16,23 @@
     name:
       - arch-install-scripts
       - aria2
+      - bottom
       - btrfs-progs
       - ccache
       - colordiff
       - cowsay
-      - dfc
       - dnscrypt-proxy
       - docker
       - docker-compose
       - dosfstools
+      - duf
+      - dust
       - fish
       - fortune-mod
       - fzf
       - ghq
       - git
       - gzip
-      - htop
       - inetutils
       - iputils
       - jq
