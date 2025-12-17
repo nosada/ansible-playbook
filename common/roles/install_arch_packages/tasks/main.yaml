@@ -41,7 +41,6 @@
       - lsof
       - man-db
       - macchina
-      - mkosi
       - mtools
       - neovim
       - nodejs
