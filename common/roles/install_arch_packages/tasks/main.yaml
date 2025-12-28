@@ -21,6 +21,7 @@
       - ccache
       - colordiff
       - cowsay
+      - devtools
       - dnscrypt-proxy
       - docker
       - docker-compose
