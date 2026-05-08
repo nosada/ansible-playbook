@@ -17,6 +17,8 @@
       - arch-install-scripts
       - aria2
       - bottom
+      - boost
+      - boost-libs
       - btrfs-progs
       - ccache
       - colordiff
@@ -38,7 +40,6 @@
       - iputils
       - jq
       - less
-      - lolcat
       - lsof
       - man-db
       - macchina
